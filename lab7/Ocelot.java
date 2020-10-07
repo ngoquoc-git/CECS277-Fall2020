@@ -1,4 +1,4 @@
-public class Ocelot {
+public class Ocelot extends Cat {
     
     public Ocelot(String n){
 

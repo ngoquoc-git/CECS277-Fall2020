@@ -1,4 +1,3 @@
-import java.util.Scanner;
 public abstract class Cat {
     
     /**
@@ -17,9 +16,6 @@ public abstract class Cat {
      * @param n gets teh name of the cat
      */
     public Cat(String n){
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Name your kitty: ");
-        n = sc.nextLine();
         name = n;
         hunger = 6;
     }

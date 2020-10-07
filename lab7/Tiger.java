@@ -20,12 +20,12 @@ public class Tiger extends Cat {
             incrementHunger(2);
             return status;
         }
-        else if (getHunger() < 8){
+        else if (getHunger() > 2 && getHunger() < 8){
             status = toString() + ", and enjoy the treat.";
             incrementHunger(2);
             return status;
         }
-        else if(getHunger() < 10){ 
+        else if(getHunger() > 7 && getHunger() < 10){ 
             status = toString() + ", but still eats the food.";
             incrementHunger(1);
             return status;
@@ -50,7 +50,7 @@ public class Tiger extends Cat {
             p.takeDamage(2);
             return status;
         }
-        else if (getHunger() < 7){
+        else if (getHunger() > 3 && getHunger() < 7){
             status = getName() + ", rolling on the carpet.";
             incrementHunger(-2);
             return status;
@@ -81,12 +81,12 @@ public class Tiger extends Cat {
             incrementHunger(-1);
             return status;
         }
-        else if (getHunger() < 8){
+        else if (getHunger() > 2 && getHunger() < 8){
             status = toString() + ", and stay still for you to pet.";
             incrementHunger(-2);
             return status;
         }
-        else if (getHunger() < 10){
+        else if (getHunger() > 7 && getHunger() < 10){
             status = toString() + ", and waiting for you on the floor.";
             incrementHunger(-3);
             return status;

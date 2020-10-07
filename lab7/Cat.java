@@ -56,9 +56,10 @@ public abstract class Cat {
      * return String representations of hunger levels
      */
     public String toString(){
-        if(hunger > 0 && hunger <5) return name + " is hungry";
-        else if (hunger < 9)  return name + " is satisfied";
-        else return name + " is full";
+        if(hunger > 0 && hunger <4) return name + " is pretty hungry";
+        else if (hunger < 6) return name + " is hungry";
+        else if (hunger < 9)  return name + " is already full";
+        else return name + " is so full";
     }
 
     /**

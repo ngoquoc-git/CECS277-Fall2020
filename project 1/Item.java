@@ -1,4 +1,5 @@
 public class Item {
+    /**Item's name */
     private String name;
 
     /**
@@ -10,7 +11,7 @@ public class Item {
     }
 
     /**
-     * return item's name for further use
+     * get item's name for further use
      * @return string name item's name
      */
     public String getName(){

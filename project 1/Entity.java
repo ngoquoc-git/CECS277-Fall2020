@@ -20,7 +20,7 @@ public abstract class Entity {
     /**
     * method that allow one entity attack another
     * @param e the entity that will be trigger attack to this entity
-    * @return other entity's name
+    * @return 
     */
     public abstract String attack(Entity e);
 

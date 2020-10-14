@@ -1,10 +1,16 @@
 import java.util.Random;
 public class DeadboltDoor implements Door{
     
+    /** First bolt toggle */
     private boolean bolt1;
-
+    /** Second bolt toggle */
     private boolean bolt2;
 
+    /**
+     * Default constructor
+     * Randomly set either bolt 1 or bolt 2 to true
+     * bolts 1 and bolt 2 have to to different to each other
+     */
     public DeadboltDoor(){
         Random ran = new Random();
         int switches = ran.nextInt(1);
@@ -15,14 +21,31 @@ public class DeadboltDoor implements Door{
         bolt2 = !bolt1;
         
     }
+
+    /**
+     * Door representation
+     * @return string door's introduction
+     */
+    @Override
     public String examine(){
         return "A deadbolt door is encountered.\nAdjust the toggles to open the door.\n";
     }
     
+    /**
+     * Possible options
+     * @return string list of options
+     */
+    @Override
     public String menu(){
         return "Toogle Bolt 1.\n2. Toggle Bolt 2.\n";
     }
 
+    /**
+     * Proccess user's action
+     * @param option user's option
+     * @return string associate to the action
+     */
+    @Override
     public String unlock(int option){
         if (option == 1) {
             bolt1 = !bolt1;
@@ -33,15 +56,30 @@ public class DeadboltDoor implements Door{
         else return null;
     }
 
+    /**
+     * Check if the door is open
+     * @return true if meet given condition, false otherwise
+     */
+    @Override
     public boolean open(){
         if(bolt1 && bolt2) return true;
         return false;
     }
 
+    /**
+     * Give user a clue
+     * @return string clue's message
+     */
+    @Override
     public String clue(){
         return "Nothing happened, try the other option.\n";
     }
-    
+
+    /**
+     * Let user know if the door is open
+     * @return success message
+     */
+    @Override
     public String success(){
         return "Zee...zee...zee, the door is open. You may enter.\n";
     }

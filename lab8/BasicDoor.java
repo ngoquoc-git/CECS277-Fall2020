@@ -31,7 +31,8 @@ public class BasicDoor implements Door{
         else input = false;
 
         if (option == 1) return "You've pushed the door";
-        else return "You've pulled the door";
+        else if (option == 2) return "You've pulled the door";
+        else return null;
     }
 
     public boolean open(){

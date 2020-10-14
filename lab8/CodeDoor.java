@@ -1,4 +1,4 @@
-public class CodeDoor implements Door{
+/**public class CodeDoor implements Door{
     
     public String examine(){
 
@@ -23,4 +23,4 @@ public class CodeDoor implements Door{
     public String success(){
         
     }
-}
+}*/

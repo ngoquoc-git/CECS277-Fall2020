@@ -1,6 +1,6 @@
 import java.util.Random;
-public class DeadboltDoor implements Door{
-    
+public class DeadboltDoor implements Door {
+
     /** First bolt toggle */
     private boolean bolt1;
     /** Second bolt toggle */
@@ -13,7 +13,7 @@ public class DeadboltDoor implements Door{
      */
     public DeadboltDoor(){
         Random ran = new Random();
-        int switches = ran.nextInt(1);
+        int switches = ran.nextInt(2);
         
         if (switches == 0)  bolt1 = true;
         else bolt1 = false;
@@ -37,7 +37,7 @@ public class DeadboltDoor implements Door{
      */
     @Override
     public String menu(){
-        return "Toogle Bolt 1.\n2. Toggle Bolt 2.\n";
+        return "1. Toogle Bolt 1.\n2. Toggle Bolt 2.\n";
     }
 
     /**
@@ -53,7 +53,7 @@ public class DeadboltDoor implements Door{
         else if(option == 2) {
             bolt2 = !bolt2;
             return "You toggle the second bolt.\n";}
-        else return null;
+        else return "Wrong input, try again.\n";
     }
 
     /**
@@ -72,7 +72,9 @@ public class DeadboltDoor implements Door{
      */
     @Override
     public String clue(){
-        return "Nothing happened, try the other option.\n";
+
+        if(bolt1 || bolt2) return "One is in the correct position\n";
+        return "Nothing happened, Try again.\n";
     }
 
     /**

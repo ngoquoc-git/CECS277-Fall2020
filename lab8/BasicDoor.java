@@ -84,6 +84,7 @@ public class BasicDoor implements Door{
      * Let user know if the door is open
      * @return success message
      */
+    @Override
     public String success(){
         return "You've successfully open this door.\n";
     }

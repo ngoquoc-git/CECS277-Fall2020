@@ -9,10 +9,12 @@ public class LockedDoor implements Door{
     /**
      * Default Contructor
      * Randomly generate a location to hide the key
+     * keyChoice is set to initialize open() to false
      */
     public LockedDoor(){
         Random ran = new Random();
         keyLocation = ran.nextInt(2) + 1;
+        keyChoice = 0;
     }
 
     /**

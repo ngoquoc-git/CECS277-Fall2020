@@ -9,10 +9,12 @@ public class ComboDoor implements Door{
     /**
      * Default Constructor 
      * Randomly generate a number to open combo door
+     * guess is set to 0 to make open() false the first time
      */
     public ComboDoor(){
         Random ran = new Random();
         comboValue = ran.nextInt(9) + 1;
+        guess = 0;
     }
 
     /**

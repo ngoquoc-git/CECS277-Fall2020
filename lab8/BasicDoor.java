@@ -47,11 +47,12 @@ public class BasicDoor implements Door{
      */
     @Override
     public String unlock(int option){
-        int doorInt = push ? 1 : 2;
+        if(option > 0 && option < 3){
+            int doorInt = push ? 1 : 2;
 
-        if(option == doorInt) input = true;
-        else input = false;
-
+            if(option == doorInt) input = true;
+            else input = false;
+        }
         if (option == 1) return "You've pushed the door.\n";
         else if (option == 2) return "You've pulled the door.\n";
         else return null;

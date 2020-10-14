@@ -1,3 +1,4 @@
+import java.util.Random;
 public class BasicDoor implements Door{
 
     private boolean push;
@@ -5,8 +6,14 @@ public class BasicDoor implements Door{
     private boolean input;
 
     public BasicDoor(){
-        push = true;
-        input = true;
+        
+        Random ran = new Random();
+        int door = ran.nextInt(1);
+
+        if (door + 1 == 0) push = true;
+        else push = false;
+
+        input = false;
     }
 
     public String examine(){
@@ -18,25 +25,29 @@ public class BasicDoor implements Door{
     }
 
     public String unlock(int option){
-        String doorOpen;
-        if(option == 1) {
+
+        if (option == 1 && push) {
             input = true;
-            push = true;
-            doorOpen = success();
+            return "You've pushed the door";
+        }
+        else if (option == 1 && !push){
+            input = false;
+            return "You've pushed the door";
+        }
+        else if (option == 2 && !push){
+            input = true;
+            return "You've pulled the door";
         }
         else{
             input = false;
-            push = false;
-            System.out.println("Nothing happened, door remains close. Try again!");
-            doorOpen = unlock(option);
+            return "You've pulled the door";
         }
-        return doorOpen;
+        
     }
 
     public boolean open(){
-        //if(input) return true;
-        //return false;
-        return input ? true : false;
+        if (input) return true;
+        return false;
     }
 
     public String clue(){

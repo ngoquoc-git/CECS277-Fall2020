@@ -1,4 +1,5 @@
 public interface Door {
+
     /**
      * Let users know what door is it
      * @return door's name and description

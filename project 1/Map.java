@@ -35,7 +35,7 @@ public class Map {
      * @param p object's location x, y
      */
     public void displayMap(Point p){
-
+        
     }
 
     Point findStart(){

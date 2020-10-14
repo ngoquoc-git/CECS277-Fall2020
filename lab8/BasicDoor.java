@@ -8,7 +8,7 @@ public class BasicDoor implements Door{
 
     /**
      * Default Constructor 
-     * Randomly generate door mechanism
+     * Randomly generate basic door mechanism push - pull
      * input will be false till user prompt an action
      */
     public BasicDoor(){

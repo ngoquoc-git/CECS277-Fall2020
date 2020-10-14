@@ -1,6 +1,13 @@
-import java.util.Scanner;
-public class Main{
-    public static void main(String[] args){
+/**
+ * A Escape Room with 3 random doors.
+ * @authors Ngo Quoc and Kevin Garcia
+ * 10/13/2020
+ * Copyright (C) 2020 Ngo Quoc and Kevin Garcia. All Rights Reserved.
+ */
+public class Main {
+
+    public static void main(String[] args) {
+
         System.out.println("Welcome to the Escape Room.");
         System.out.println("You must unlock 3 doors to escape...");
 
@@ -28,19 +35,30 @@ public class Main{
         }
 
         System.out.println("Congratulations! You escaped...this time.");
+
     }
 
-    public static void openDoor(Door d){
-        Scanner sc = new Scanner(System.in);
-        int decision;
+    /**
+     * Passes in the door the user will try to unlock
+     * @param d Random door to be opened
+     */
+    public static void openDoor(Door d) {
 
-        System.out.print(d.examine());
-        System.out.print(d.menu());
-        while (!d.open()){
-            decision = sc.nextInt();
-            d.unlock(decision);
-            if(!d.open()) System.out.print(d.clue());
-            else System.out.print(d.success());
+        System.out.println(d.examine());
+
+        while (!d.open()) {
+
+            System.out.println(d.menu());
+
+            int num = CheckInput.getInt();
+            System.out.println(d.unlock(num));
+
+            if (!d.open()) System.out.println(d.clue());
+
         }
+
+        System.out.println(d.success());
+
     }
+
 }

@@ -17,11 +17,11 @@ public class BasicDoor implements Door{
     }
 
     public String examine(){
-        return "You reach a basic door\nYou can either push it or pull it to open\n";
+        return "You reach a basic door.\nYou can either push it or pull it to open.\n";
     }
     
     public String menu(){
-        return "1.Push\n2. Pull";
+        return "1.Push.\n2. Pull.\n";
     }
 
     public String unlock(int option){
@@ -30,27 +30,25 @@ public class BasicDoor implements Door{
         if(option == doorInt) input = true;
         else input = false;
 
-        if (option == 1) return "You've pushed the door";
-        else if (option == 2) return "You've pulled the door";
+        if (option == 1) return "You've pushed the door.\n";
+        else if (option == 2) return "You've pulled the door.\n";
         else return null;
     }
 
     public boolean open(){
         if (input) {
-            success();
             return true;
         }
         else{
-            clue();
             return false;
         }
     }
 
     public String clue(){
-        return "The door stays still, try again.";
+        return "The door stays still, try again.\n";
     }
     
     public String success(){
-        return "You've successfully open this door.";
+        return "You've successfully open this door.\n";
     }
 }

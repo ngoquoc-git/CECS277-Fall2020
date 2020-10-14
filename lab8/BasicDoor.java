@@ -1,5 +1,6 @@
 import java.util.Random;
-public class BasicDoor implements Door{
+
+public class BasicDoor implements Door {
 
     /** Door mechanism: push or pull */
     private boolean push;
@@ -14,7 +15,7 @@ public class BasicDoor implements Door{
     public BasicDoor(){
         
         Random ran = new Random();
-        int door = ran.nextInt(1) + 1;
+        int door = ran.nextInt(2) + 1;
 
         if (door == 1) push = true;
         else push = false;
@@ -37,11 +38,11 @@ public class BasicDoor implements Door{
      */
     @Override
     public String menu(){
-        return "1.Push.\n2. Pull.\n";
+        return "1. Push.\n2. Pull.\n";
     }
 
     /**
-     * Proccess user's action
+     * Process user's action
      * @param option user's option
      * @return string associate to the action
      */
@@ -55,7 +56,7 @@ public class BasicDoor implements Door{
         }
         if (option == 1) return "You've pushed the door.\n";
         else if (option == 2) return "You've pulled the door.\n";
-        else return null;
+        else return "Wrong input, try again.\n";
     }
 
     /**
@@ -85,8 +86,8 @@ public class BasicDoor implements Door{
      * Let user know if the door is open
      * @return success message
      */
-    @Override
     public String success(){
         return "You've successfully open this door.\n";
     }
 }
+

@@ -8,16 +8,16 @@ public class BasicDoor implements Door{
     public BasicDoor(){
         
         Random ran = new Random();
-        int door = ran.nextInt(1);
+        int door = ran.nextInt(1) + 1;
 
-        if (door + 1 == 0) push = true;
+        if (door == 1) push = true;
         else push = false;
 
         input = false;
     }
 
     public String examine(){
-        return "You reach a basic door\n";
+        return "You reach a basic door\nYou can either push it or pull it to open\n";
     }
     
     public String menu(){
@@ -25,33 +25,28 @@ public class BasicDoor implements Door{
     }
 
     public String unlock(int option){
+        int doorInt = push ? 1 : 2;
 
-        if (option == 1 && push) {
-            input = true;
-            return "You've pushed the door";
-        }
-        else if (option == 1 && !push){
-            input = false;
-            return "You've pushed the door";
-        }
-        else if (option == 2 && !push){
-            input = true;
-            return "You've pulled the door";
-        }
-        else{
-            input = false;
-            return "You've pulled the door";
-        }
-        
+        if(option == doorInt) input = true;
+        else input = false;
+
+        if (option == 1) return "You've pushed the door";
+        else return "You've pulled the door";
     }
 
     public boolean open(){
-        if (input) return true;
-        return false;
+        if (input) {
+            success();
+            return true;
+        }
+        else{
+            clue();
+            return false;
+        }
     }
 
     public String clue(){
-        return "You can either push it or pull it to open\n";
+        return "The door stays still, try again.";
     }
     
     public String success(){

@@ -1,10 +1,16 @@
 import java.util.Random;
 public class BasicDoor implements Door{
 
+    /** Door mechanism: push or pull */
     private boolean push;
-
+    /** Check if input is true to open the door */
     private boolean input;
 
+    /**
+     * Default Constructor 
+     * Randomly generate door mechanism
+     * input will be false till user prompt an action
+     */
     public BasicDoor(){
         
         Random ran = new Random();
@@ -16,14 +22,30 @@ public class BasicDoor implements Door{
         input = false;
     }
 
+    /**
+     * Door representation
+     * @return string door's introduction
+     */
+    @Override
     public String examine(){
         return "You reach a basic door.\nYou can either push it or pull it to open.\n";
     }
     
+    /**
+     * Possible options
+     * @return string list of options
+     */
+    @Override
     public String menu(){
         return "1.Push.\n2. Pull.\n";
     }
 
+    /**
+     * Proccess user's action
+     * @param option user's option
+     * @return string associate to the action
+     */
+    @Override
     public String unlock(int option){
         int doorInt = push ? 1 : 2;
 
@@ -35,6 +57,11 @@ public class BasicDoor implements Door{
         else return null;
     }
 
+    /**
+     * Check if the door is open
+     * @return true if meet given condition, false otherwise
+     */
+    @Override
     public boolean open(){
         if (input) {
             return true;
@@ -44,10 +71,19 @@ public class BasicDoor implements Door{
         }
     }
 
+    /**
+     * Give user a clue
+     * @return string clue's message
+     */
+    @Override
     public String clue(){
         return "The door stays still, try again.\n";
     }
     
+    /**
+     * Let user know if the door is open
+     * @return success message
+     */
     public String success(){
         return "You've successfully open this door.\n";
     }

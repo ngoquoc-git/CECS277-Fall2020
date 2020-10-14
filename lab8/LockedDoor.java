@@ -1,6 +1,6 @@
 import java.util.Random;
-public class LockedDoor implements Door{
-    
+public class LockedDoor implements Door {
+
     /** Location that the tkey is hidden */
     private int keyLocation;
     /** Location that user decides to look for the key */
@@ -13,7 +13,7 @@ public class LockedDoor implements Door{
      */
     public LockedDoor(){
         Random ran = new Random();
-        keyLocation = ran.nextInt(2) + 1;
+        keyLocation = ran.nextInt(3) + 1;
         keyChoice = 0;
     }
 
@@ -32,7 +32,7 @@ public class LockedDoor implements Door{
      */
     @Override
     public String menu(){
-        return "1.Look Under the Mat.\n2. Look Under the Flower Pot.\n3. Look Under Fake Rock.\n";
+        return "1. Look Under the Mat.\n2. Look Under the Flower Pot.\n3. Look Under Fake Rock.\n";
     }
 
     /**
@@ -48,7 +48,7 @@ public class LockedDoor implements Door{
             else if (keyChoice == 2) return "You looked under the flower pot\n";
             else return "You looked under the fake rock\n";
         }
-        return null;
+        return "Wrong input, try again.\n";
     }
 
     /**

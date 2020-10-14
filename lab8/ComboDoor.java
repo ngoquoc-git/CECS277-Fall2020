@@ -72,6 +72,7 @@ public class ComboDoor implements Door{
      * Let user know if the door is open
      * @return success message
      */
+    @Override
     public String success(){
         return "It is the right number, door is opening";
     }

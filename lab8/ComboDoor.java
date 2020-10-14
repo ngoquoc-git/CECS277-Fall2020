@@ -1,6 +1,6 @@
 import java.util.Random;
-public class ComboDoor implements Door{
-    
+public class ComboDoor implements Door {
+
     /** A random number needed to open the door*/
     private int comboValue;
     /** User's guesses */
@@ -13,7 +13,7 @@ public class ComboDoor implements Door{
      */
     public ComboDoor(){
         Random ran = new Random();
-        comboValue = ran.nextInt(9) + 1;
+        comboValue = ran.nextInt(10) + 1;
         guess = 0;
     }
 
@@ -46,7 +46,7 @@ public class ComboDoor implements Door{
             guess = option;
             return "You dialed " + guess + ". ";
         }
-        return null;
+        return "Wrong Input, ";
     }
 
     /**
@@ -65,16 +65,19 @@ public class ComboDoor implements Door{
      */
     @Override
     public String clue(){
-        if(guess < comboValue) return "It's too low.\n";
-        else if (guess > comboValue) return "It's too high.\n";
-        else return success();
+        if(guess != 0){
+          if(guess < comboValue) return "It's too low.\n";
+          else if (guess > comboValue) return "It's too high.\n";
+          else return success();
+        }
+        else return "try again.\n";
     }
     
     /**
      * Let user know if the door is open
      * @return success message
      */
-    @Override
+     @Override
     public String success(){
         return "It is the right number, door is opening";
     }

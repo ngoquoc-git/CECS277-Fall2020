@@ -20,7 +20,7 @@ public abstract class Entity {
     /**
     * method that allow one entity attack another
     * @param e the entity that will be trigger attack to this entity
-    * @return 
+    * @return attack's status in string
     */
     public abstract String attack(Entity e);
 
@@ -68,6 +68,7 @@ public abstract class Entity {
     }
 
     /**
+     * Display Entity's status
      * @return Entity's name and current health points
      */
     public String toString(){

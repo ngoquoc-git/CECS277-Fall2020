@@ -12,12 +12,12 @@ public class Map {
      */
     public Map(){
         map = new char[5][5];
-        
+        revealed = new boolean[5][5];
     }
 
     /**
-     * 
-     * @param mapNum
+     * Load the map based on given map numbers
+     * @param mapNum determine which map will be loaded
      */
     public void loadMap(int mapNum){
         try {
@@ -45,8 +45,7 @@ public class Map {
      * @return loc character at location x, y
      */
     public char getCharAtLoc(Point p){
-        char loc = map[p.x][p.y];
-        return loc;
+        return map[p.x][p.y];
     }
 
     /**
@@ -64,9 +63,36 @@ public class Map {
         }
     }
 
-    //Point findStart(){
-    //    return p;
-    //}
+    /**
+     * Find the strarting point by finding 's'
+     * @return pt start point location
+     */
+    Point findStart(){
+        Point pt = new Point(0,0);
+        for(int i = 0; i< map.length; i++){
+            for(int n = 0; n < map.length; n++){
+                if(map[i][n] == 's'){
+                    pt.x = i;
+                    pt.y = n;
+                }
+            }
+        }
+        return pt;
+    }
 
+    /**
+     * Set instance variable of boolean revealed of a specific location
+     * @param p location of point that will be revealed
+     */
+    public void reveal(Point p){
+        revealed[p.x][p.y] = true;
+    }
 
+    /**
+     * remove a character at a location and replace to 'n'
+     * @param p location of the removed character
+     */
+    public void removeCharAtLoc(Point p){
+        map[p.x][p.y] = 'n';
+    }
 }

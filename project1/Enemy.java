@@ -3,7 +3,8 @@ public class Enemy extends Entity{
     private Item item;
 
     /**
-     * Default constructor
+     * Overloaded constructor
+     * Hold Enemy information: name, maximum HP and item
      * @param n enemy's name
      * @param mHP enemy's maximum health points
      * @param i enemy's item

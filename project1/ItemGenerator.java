@@ -30,7 +30,7 @@ public class ItemGenerator {
      * Call a random item from itemList in order to pass to an enemy 
      * @return a random item
      */
-    public Item generataItem(){
+    public Item generateItem(){
         Random rand = new Random();
         int itemGen = rand.nextInt(itemList.size());
         Item item = new Item(itemList.get(itemGen).getName());

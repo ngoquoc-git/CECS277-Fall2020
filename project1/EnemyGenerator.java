@@ -47,7 +47,7 @@ public class EnemyGenerator {
      */
     public Enemy generateEnemy(){
         Random rand = new Random();
-        int enemyGen = rand.nextInt(enemyList.size() - 1);
+        int enemyGen = rand.nextInt(enemyList.size());
         if(enemyList.get(enemyGen) instanceof MagicalEnemy){
             Enemy magicE = new MagicalEnemy(enemyList.get(enemyGen).getName(), enemyList.get(enemyGen).getMaxHP(), enemyList.get(enemyGen).getItem());
             return magicE;

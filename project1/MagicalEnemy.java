@@ -30,35 +30,35 @@ public class MagicalEnemy extends Enemy implements Magical{
     }
 
     /**
-     * Skill fire ball
+     * Skill fire ball deals damage equals to entity's maxHP + 1
      * @param e the entity that will be attacked
      * @return fire ball attack status
      */
     @Override
     public String fireBall(Entity e){
-        e.takeDamage(6);
+        e.takeDamage(e.getMaxHP() + 1);
         return getName() + " throw a fire ball, it burns " + e.getName() + " for 6 damages.\n";
     }
 
     /**
-     * Skill thunder clap
+     * Skill thunder clap deals damage equals to entity's maxHP
      * @param e the entity that will be attacked
      * @return thunder clap attack status
      */
     @Override
     public String thunderClap(Entity e){
-        e.takeDamage(4);
+        e.takeDamage(e.getMaxHP());
         return getName() + "'s hand are fully charged, it uses thunder clap and zap " + e.getName() + " for 4 damages.\n";
     }
 
     /**
-     * Skill magical missiles
+     * Skill magical missiles deals damage equals to entity's maxHP + 2
      * @param e the entity that will be attacked
      * @return magical missiles attack status
      */
     @Override
     public String magicalMissile(Entity e) {
-        e.takeDamage(9);
+        e.takeDamage(e.getMaxHP() + 2);
         return getName() + " concentrates its mana and launch magical missiles that deals 9 damages on " + e.getName();
     }
 }

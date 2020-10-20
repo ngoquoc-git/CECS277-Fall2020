@@ -43,13 +43,15 @@ public class EnemyGenerator {
 
     /**
      * Call a random enemy from the enemyList
+     * Magical enemy may get stronger if its level is higher
      * @return either a physical enemy or a magical enemy
      */
-    public Enemy generateEnemy(){
+    public Enemy generateEnemy(int level){
         Random rand = new Random();
         int enemyGen = rand.nextInt(enemyList.size());
+
         if(enemyList.get(enemyGen) instanceof MagicalEnemy){
-            Enemy magicE = new MagicalEnemy(enemyList.get(enemyGen).getName(), enemyList.get(enemyGen).getMaxHP(), enemyList.get(enemyGen).getItem());
+            Enemy magicE = new MagicalEnemy(enemyList.get(enemyGen).getName(), enemyList.get(enemyGen).getMaxHP() + level, enemyList.get(enemyGen).getItem());
             return magicE;
         }
         else{

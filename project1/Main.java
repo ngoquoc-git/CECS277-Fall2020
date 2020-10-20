@@ -3,77 +3,57 @@ import java.util.Random;
 class Main{
     /**
      * The whole program will be executed here
-     * @param args
+     * @param args nothing is passed in args
      */
     public static void main(String[] args){
-        System.out.print("What is your name traveler? ");
-        String name = CheckInput.getString();
-        int usrChoice = 0;//directional choice for the game
-        int level = 0; //level++ to move on to next level
-        int[] levels = { 1, 2, 3 }; //store level numbers in array
-
-        //load in necessary components needed for the game
+        int decision;
+        int level = 0;
+        int[] levels = { 1, 2, 3 };
         Map map = new Map();
-        map.loadMap(levels[level % levels.length]); // use modulus operator to get num from [0-2] for index of levels array
-        Hero hero = new Hero(name, map);
+        String heroName;
+        
+        System.out.print("What is your name traveler? ");
+        heroName = CheckInput.getString();
+        map.loadMap(levels[level % levels.length]);
+        Hero myHero = new Hero(heroName, map);
+
         ItemGenerator ig = new ItemGenerator();
         EnemyGenerator eg = new EnemyGenerator(ig);
 
-        //loop where the game takes place, prints out hero info and looks through map for 'm', 'i', or 'n'
-        //to use appropriate methods for rooms
         do{
-            System.out.println(hero.toString());
-            map.displayMap(hero.getLocation());
+            System.out.println(myHero.toString());
+            map.displayMap(myHero.getLocation());
             System.out.println("1. Go North\n2. Go South\n3. Go East\n4. Go West\n5. Quit");
 
-            usrChoice = CheckInput.getIntRange(1, 5);
-            if (usrChoice == 1){
-                hero.goNorth();
+            decision = CheckInput.getIntRange(1, 5);
+            switch (decision){
+                case 1: myHero.goNorth(); break;
+                case 2: myHero.goSouth(); break;
+                case 3: myHero.goEast(); break;
+                case 4: myHero.goWest(); break;
+                default: break;
             }
-            else if (usrChoice == 2){
-                hero.goSouth();
-            }
-            else if (usrChoice == 3){
-                hero.goEast();
-            }
-            else if (usrChoice == 4){
-                hero.goWest();
-            }
-            else if (usrChoice == 5){
-                break;
-            }
-            //returning to the start
-            if (map.getCharAtLoc(hero.getLocation()) == 's'){
-                System.out.println("You are back at the start.");
-            }
-            //Item room
-            else if (map.getCharAtLoc(hero.getLocation()) == 'i'){
-                itemRoom(hero, map, ig);
-            }
-            //Monster room
-            else if (monsterRoom(hero, map, eg, levels[level % levels.length])){
+
+            if (map.getCharAtLoc(myHero.getLocation()) == 's') System.out.println("You are back at the start.");
+            else if (map.getCharAtLoc(myHero.getLocation()) == 'i') itemRoom(myHero, map, ig);
+            else if (monsterRoom(myHero, map, eg, levels[level % levels.length])){
                 Enemy e = eg.generateEnemy(0);
                 System.out.println("You've encountered a " + e.getName());
 
-                while(fight(hero, e));
-                if (e.getHP() == 0) {
-                    map.removeCharAtLoc(hero.getLocation());
-                }
+                while(fight(myHero, e));
+                if (e.getHP() == 0) map.removeCharAtLoc(myHero.getLocation());
             }
-            //Empty room
-            else if(map.getCharAtLoc(hero.getLocation()) == 'n'){
-                System.out.println("There was nothing here.");
-            }
-            //Final spot of map, move onto next map
-            else if (map.getCharAtLoc(hero.getLocation()) == 'f') {
+            else if(map.getCharAtLoc(myHero.getLocation()) == 'n') System.out.println("There was nothing here.");
+            
+            else if (map.getCharAtLoc(myHero.getLocation()) == 'f') {
                 System.out.println("Next level:\n");
                 level++;
                 map.loadMap(levels[level % levels.length]);
-                hero.heal(hero.getMaxHP());
+                myHero.heal(myHero.getMaxHP());
             }
-        }while(hero.getHP() != 0);
-        //display messages for when game is over
-        if (hero.getHP() <= 0){
+        } while(myHero.getHP() != 0);
+        
+        if (myHero.getHP() < `){
             System.out.println("Game Over. You died");
         }
         else{
@@ -136,10 +116,6 @@ class Main{
             if (e.getHP() < 1) {
                 System.out.println("You defeated the " + e.getName());
                 h.pickUpItem(e.getItem());
-                return false;
-            }
-            if (h.getHP() < 0){
-                System.out.println(h.getName() + "died. Game Over.\n");
                 return false;
             }
             return true;

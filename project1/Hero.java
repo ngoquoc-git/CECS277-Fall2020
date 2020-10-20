@@ -102,7 +102,6 @@ public class Hero extends Entity implements Magical{
      */
     public boolean pickUpItem(Item i){
         int bagSize = 5;
-        CheckInput chk = new CheckInput();
         Boolean replaceItem;
         System.out.println("You received " + i.getName() + " from its corpse");
         if(items.size() < bagSize){
@@ -111,9 +110,9 @@ public class Hero extends Entity implements Magical{
         }
         else{
             System.out.print("Your bag is fulled, Do you want to erase an item to add this (y/n): ");
-            replaceItem = chk.getYesNo();
+            replaceItem = CheckInput.getYesNo();
             if(replaceItem){
-                int dropI = chk.getIntRange(0, 4);
+                int dropI = CheckInput.getIntRange(0, 4);
                 dropItem(dropI);
                 items.add(i);
                 return true;

@@ -33,8 +33,7 @@ public class EnemyGenerator {
                     enemyList.add(physE);
                 }
             }
-
-
+            enemy.close();
         }
         catch (FileNotFoundException e){
             e.printStackTrace();

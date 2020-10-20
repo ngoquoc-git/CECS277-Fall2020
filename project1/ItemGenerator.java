@@ -20,6 +20,7 @@ public class ItemGenerator {
                 Item currItem = new Item(items.nextLine());
                 itemList.add(currItem);
             }
+            items.close();
         }
         catch (FileNotFoundException e){
             e.printStackTrace();

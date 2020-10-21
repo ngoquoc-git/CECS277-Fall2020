@@ -50,7 +50,7 @@ public class Hero extends Entity implements Magical{
      */
     @Override
     public String magicalMissile(Entity e) {
-        e.takeDamage(6);
+        e.takeDamage(2);
         return getName() + " shot magical missiles to " + e.getName() + ". It deals 6 damages";
     }
 
@@ -63,6 +63,7 @@ public class Hero extends Entity implements Magical{
     public String attack(Entity e) {
         Random rand = new Random();
         int dealDamage = rand.nextInt(7);
+        e.takeDamage(dealDamage);
         if (dealDamage == 0) return getName() + " tried to attack " + e.getName() + ", but it is missed";
         return getName() + " slashed " + e.getName() + " and deals " + dealDamage + " damages";
     }
@@ -209,7 +210,7 @@ public class Hero extends Entity implements Magical{
      * @return hero's location
      */
     public char goWest(){
-        if (location.y == 4){
+        if (location.y == 0){
             return map.getCharAtLoc(location);
         }
         map.reveal(location);

@@ -33,7 +33,6 @@ public class Map {
                 }
               }
             }
-            myMap.close();
           } 
           catch (FileNotFoundException e) {
             System.out.println("An error occurred.");

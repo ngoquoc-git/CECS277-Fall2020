@@ -39,7 +39,6 @@ class Main{
             else if (monsterRoom(myHero, map, eg, levels[level % levels.length])){
                 Enemy e = eg.generateEnemy(0);
                 System.out.println("You've encountered a " + e.getName());
-
                 while(fight(myHero, e));
                 if (e.getHP() == 0) map.removeCharAtLoc(myHero.getLocation());
             }
@@ -53,7 +52,7 @@ class Main{
             }
         } while(myHero.getHP() != 0);
         
-        if (myHero.getHP() < `){
+        if (myHero.getHP() < 1){
             System.out.println("Game Over. You died");
         }
         else{
@@ -81,7 +80,7 @@ class Main{
             System.out.println("1. Fight.\n2. Run Away.\n");
             decision = CheckInput.getIntRange(1, 2);
         }
-
+        //Fight
         if (decision == 1){
             System.out.println("1.Physical Attack\n2.Magical Attack");
             int attack = CheckInput.getIntRange(1, 2);

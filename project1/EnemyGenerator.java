@@ -54,7 +54,7 @@ public class EnemyGenerator {
             return magicE;
         }
         else{
-            Enemy physE = new Enemy(enemyList.get(enemyGen).getName(), enemyList.get(enemyGen).getMaxHP(), enemyList.get(enemyGen).getItem());
+            Enemy physE = new Enemy(enemyList.get(enemyGen).getName(), enemyList.get(enemyGen).getMaxHP() + level, enemyList.get(enemyGen).getItem());
             return physE;
         }
     }

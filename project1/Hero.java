@@ -28,8 +28,10 @@ public class Hero extends Entity implements Magical{
      */
     @Override
     public String fireBall(Entity e){
-        e.takeDamage(4);
-        return getName() + " throw a firebal at " + e.getName() + ", it deals 4 damages.\n";
+        Random rand = new Random();
+        int damage = rand.nextInt(7) + 1;
+        e.takeDamage(damage);
+        return getName() + " throw a firebal at " + e.getName() + ", it deals " + damage + " damages.\n";
     }
 
     /**
@@ -39,8 +41,10 @@ public class Hero extends Entity implements Magical{
      */
     @Override
     public String thunderClap(Entity e){
-        e.takeDamage(3);
-        return getName() + " does a thunder clap and shocks " + e.getName() + " for 3 damages.\n";
+        Random rand = new Random();
+        int damage = rand.nextInt(7) + 1;
+        e.takeDamage(damage);
+        return getName() + " does a thunder clap and shocks " + e.getName() + " for " + damage + " damages.\n";
     }
 
     /**
@@ -50,8 +54,10 @@ public class Hero extends Entity implements Magical{
      */
     @Override
     public String magicalMissile(Entity e) {
-        e.takeDamage(2);
-        return getName() + " shot magical missiles to " + e.getName() + ". It deals 6 damages";
+        Random rand = new Random();
+        int damage = rand.nextInt(7) + 1;
+        e.takeDamage(damage);
+        return getName() + " shot magical missiles to " + e.getName() + ". It deals "+ damage +" damages";
     }
 
     /**
@@ -113,6 +119,8 @@ public class Hero extends Entity implements Magical{
             System.out.print("Your bag is fulled, Do you want to erase an item to add this (y/n): ");
             replaceItem = CheckInput.getYesNo();
             if(replaceItem){
+                itemsToString();
+                System.out.print("What will you drop? ");
                 int dropI = CheckInput.getIntRange(0, 4);
                 dropItem(dropI);
                 items.add(i);
@@ -152,6 +160,7 @@ public class Hero extends Entity implements Magical{
                 items.remove(i);
             }
         }
+        toString();
     }
 
     /**

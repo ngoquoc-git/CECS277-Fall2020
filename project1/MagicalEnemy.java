@@ -36,8 +36,10 @@ public class MagicalEnemy extends Enemy implements Magical{
      */
     @Override
     public String fireBall(Entity e){
-        e.takeDamage(e.getMaxHP() + 1);
-        return getName() + " throw a fire ball, it burns " + e.getName() + " for 6 damages.\n";
+        Random rand = new Random();
+        int damage = rand.nextInt(e.getMaxHP()) + 1;
+        e.takeDamage(damage);
+        return getName() + " throw a fire ball, it burns " + e.getName() + " for "+ damage + " damages.\n";
     }
 
     /**
@@ -47,8 +49,10 @@ public class MagicalEnemy extends Enemy implements Magical{
      */
     @Override
     public String thunderClap(Entity e){
-        e.takeDamage(e.getMaxHP());
-        return getName() + "'s hand are fully charged, it uses thunder clap and zap " + e.getName() + " for 4 damages.\n";
+        Random rand = new Random();
+        int damage = rand.nextInt(e.getMaxHP()) + 1;
+        e.takeDamage(damage);
+        return getName() + "'s hand are fully charged, it uses thunder clap and zap " + e.getName() + " for " + damage + " damages.\n";
     }
 
     /**
@@ -58,7 +62,9 @@ public class MagicalEnemy extends Enemy implements Magical{
      */
     @Override
     public String magicalMissile(Entity e) {
-        e.takeDamage(e.getMaxHP() + 2);
-        return getName() + " concentrates its mana and launch magical missiles that deals 9 damages on " + e.getName();
+        Random rand = new Random();
+        int damage = rand.nextInt(e.getMaxHP()) + 1;
+        e.takeDamage(damage);
+        return getName() + " concentrates its mana and launch magical missiles that deals " + damage + " damages on " + e.getName();
     }
 }

@@ -59,7 +59,7 @@ class Main{
                 }
                 else System.out.println("Go Ahead.");
             }
-        } while(myHero.getHP() != 0 && level < 4 && endGame == false);
+        } while(myHero.getHP() > 0 && level < 4 && endGame == false);
         
         if (myHero.getHP() < 1){
             System.out.println("Game Over. You died.\n");
@@ -156,7 +156,8 @@ class Main{
                 System.out.println(e.getName() + " did not let you get away.");
                 System.out.println(e.attack(h));
                 System.out.println(h.toString());
-                return true;
+                if(h.getHP() > 0) return true;
+                else return false;
             }
         }
         else {

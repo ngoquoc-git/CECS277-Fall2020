@@ -16,10 +16,11 @@ class Main{
         int[] mazeLevels = { 1, 2, 3 };
         String heroName;
         int mapSelection;
+        boolean endGame  = false;
         
         System.out.print("What is your name traveler? ");
         heroName = CheckInput.getString();
-        mapSelection= rand.nextInt(mazeLevels.length) + 1;
+        mapSelection= rand.nextInt(mazeLevels.length);
         map.loadMap(mazeLevels[mapSelection]);
         Hero myHero = new Hero(heroName, map);
 
@@ -37,34 +38,35 @@ class Main{
                 case 2: myHero.goSouth(); break;
                 case 3: myHero.goEast(); break;
                 case 4: myHero.goWest(); break;
-                case 5: break;
+                case 5: endGame = true; break;
             }
-
-            if (map.getCharAtLoc(myHero.getLocation()) == 's') System.out.println("You are back at the start.");
-            else if (map.getCharAtLoc(myHero.getLocation()) == 'i') itemRoom(myHero, map, ig);
-            else if (map.getCharAtLoc(myHero.getLocation()) == 'm'){
-                enemy = eg.generateEnemy(level);
-                System.out.println("You've encountered a " + enemy.getName());
-                while(fight(myHero, enemy));
-                if (enemy.getHP() == 0) map.removeCharAtLoc(myHero.getLocation());
+            if(endGame == false){
+                if (map.getCharAtLoc(myHero.getLocation()) == 's') System.out.println("You are back at the start.");
+                else if (map.getCharAtLoc(myHero.getLocation()) == 'i') itemRoom(myHero, map, ig);
+                else if (map.getCharAtLoc(myHero.getLocation()) == 'm'){
+                    enemy = eg.generateEnemy(level);
+                    System.out.println("You've encountered a " + enemy.getName());
+                    while(fight(myHero, enemy));
+                    if (enemy.getHP() == 0) map.removeCharAtLoc(myHero.getLocation());
+                }
+                else if (map.getCharAtLoc(myHero.getLocation()) == 'f') {
+                    level++;
+                    System.out.println("You have reached the finish point. Move on to the next level. \n");
+                    mapSelection = rand.nextInt(3);
+                    map.loadMap(mapSelection);
+                    myHero.heal(myHero.getMaxHP());
+                    System.out.println ("Level: " + level);
+                }
+                else System.out.println("Go Ahead.");
             }
-            else if (map.getCharAtLoc(myHero.getLocation()) == 'f') {
-                level++;
-                System.out.println("You have reached the finish point. Move on to the next level. \n");
-                mapSelection = rand.nextInt(3) + 1;
-                map.loadMap(mapSelection);
-                myHero.heal(myHero.getMaxHP());
-                System.out.println ("Level: " + level);
-            }
-            else System.out.println("Go Ahead.");
-        } while(myHero.getHP() != 0 || level < 4 || decision == 5);
+        } while(myHero.getHP() != 0 && level < 4 && endGame == false);
         
         if (myHero.getHP() < 1){
-            System.out.println("Game Over. You died");
+            System.out.println("Game Over. You died.\n");
         }
-        else{
-            System.out.println("Congratulation, you successfully seized the maze.\n");
-        }
+
+        if (level < 4) System.out.println("Game Over, Try again sometimes.\n");
+        else System.out.println("Congratulation, you successfully seized the maze.\n");
     }
 
     public static boolean monsterRoom(Hero h, Map m, EnemyGenerator eg, int level){
@@ -152,7 +154,8 @@ class Main{
             }
             else{
                 System.out.println(e.getName() + " did not let you get away.");
-                e.attack(h);
+                System.out.println(e.attack(h));
+                System.out.println(h.toString());
                 return true;
             }
         }

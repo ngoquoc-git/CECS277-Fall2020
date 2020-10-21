@@ -53,7 +53,7 @@ class Main{
                     level++;
                     System.out.println("You have reached the finish point. Move on to the next level. \n");
                     mapSelection = rand.nextInt(3);
-                    map.loadMap(mapSelection);
+                    map.loadMap(mazeLevels[mapSelection]);
                     myHero.heal(myHero.getMaxHP());
                     if(level < 4) System.out.println ("Level: " + level); 
                 }

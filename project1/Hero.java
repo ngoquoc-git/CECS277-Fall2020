@@ -110,7 +110,7 @@ public class Hero extends Entity implements Magical{
     public boolean pickUpItem(Item i){
         int bagSize = 5;
         Boolean replaceItem;
-        System.out.println("You received " + i.getName() + " from its corpse");
+        System.out.println("You received " + i.getName());
         if(items.size() < bagSize){
             items.add(i);
             return true;

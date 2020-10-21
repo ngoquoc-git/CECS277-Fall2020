@@ -55,7 +55,7 @@ class Main{
                     mapSelection = rand.nextInt(3);
                     map.loadMap(mapSelection);
                     myHero.heal(myHero.getMaxHP());
-                    System.out.println ("Level: " + level);
+                    if(level < 4) System.out.println ("Level: " + level); 
                 }
                 else System.out.println("Go Ahead.");
             }

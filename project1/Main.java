@@ -43,7 +43,7 @@ class Main{
             if(endGame == false){
                 if (map.getCharAtLoc(myHero.getLocation()) == 's') System.out.println("You are back at the start.");
                 else if (map.getCharAtLoc(myHero.getLocation()) == 'i') itemRoom(myHero, map, ig);
-                else if (map.getCharAtLoc(myHero.getLocation()) == 'm'){
+                else if (monsterRoom(myHero, map, eg, level)){
                     enemy = eg.generateEnemy(level);
                     System.out.println("You've encountered a " + enemy.getName());
                     while(fight(myHero, enemy));
@@ -173,6 +173,9 @@ class Main{
      * @param ig item in the room                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
      */
     public static void itemRoom(Hero h, Map m, ItemGenerator ig){
-        if(h.pickUpItem(ig.generateItem())) m.removeCharAtLoc(h.getLocation());
+        if(m.getCharAtLoc(h.getLocation()) == 'i') {
+            h.pickUpItem(ig.generateItem());
+            m.removeCharAtLoc(h.getLocation());
+        }
     }
 }

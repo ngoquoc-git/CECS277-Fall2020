@@ -119,7 +119,7 @@ public class Hero extends Entity implements Magical{
             System.out.print("Your bag is fulled, Do you want to erase an item to add this (y/n): ");
             replaceItem = CheckInput.getYesNo();
             if(replaceItem){
-                itemsToString();
+                System.out.println(itemsToString());
                 System.out.print("What will you drop? ");
                 int dropI = CheckInput.getIntRange(0, 4);
                 dropItem(dropI);

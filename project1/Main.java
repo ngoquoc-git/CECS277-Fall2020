@@ -1,11 +1,16 @@
+/**
+ * Class: CECS 277
+ * Project : Project 1
+ * Authors: Quoc Ngo, Alnahwi Abdullah
+ */
 import java.util.Random;
-
 class Main{
     /**
      * The whole program will be executed here
      * @param args nothing is passed in args
      */
     public static void main(String[] args){
+        // All variables are decalred here
         Map map = new Map();
         Random rand = new Random();
         ItemGenerator ig = new ItemGenerator();
@@ -17,21 +22,20 @@ class Main{
         String heroName;
         int mapSelection;
         boolean endGame  = false;
-        
+        Hero myHero;
+
+        //Get user's name and load map
         System.out.print("What is your name traveler? ");
         heroName = CheckInput.getString();
         mapSelection= rand.nextInt(mazeLevels.length);
         map.loadMap(mazeLevels[mapSelection]);
-        Hero myHero = new Hero(heroName, map);
+        myHero = new Hero(heroName, map);
 
-        
-
+        //Loop to break the game if plaer decide to quit, hero dies, or complete 3 levels
         do{
-            
             System.out.println(myHero.toString());
             map.displayMap(myHero.getLocation());
             System.out.println("1. Go North\n2. Go South\n3. Go East\n4. Go West\n5. Quit");
-
             decision = CheckInput.getIntRange(1, 5);
             switch (decision){
                 case 1: myHero.goNorth(); break;
@@ -40,7 +44,9 @@ class Main{
                 case 4: myHero.goWest(); break;
                 case 5: endGame = true; break;
             }
+            //End game immediately if user chooses quit
             if(endGame == false){
+                //Choose actions base on location's character
                 if (map.getCharAtLoc(myHero.getLocation()) == 's') System.out.println("You are back at the start.");
                 else if (map.getCharAtLoc(myHero.getLocation()) == 'i') itemRoom(myHero, map, ig);
                 else if (monsterRoom(myHero, map, eg, level)){
@@ -61,6 +67,7 @@ class Main{
             }
         } while(myHero.getHP() > 0 && level < 4 && endGame == false);
         
+        //Print out result based on hero's health points
         if (myHero.getHP() < 1){
             System.out.println("Game Over. You died.\n");
         }
@@ -69,18 +76,21 @@ class Main{
         else System.out.println("Congratulation, you successfully seized the maze.\n");
     }
 
-    public static boolean monsterRoom(Hero h, Map m, EnemyGenerator eg, int level){
-        if (m.getCharAtLoc(h.getLocation()) == 'm') return true;
-        return false;
-    }
-
+    /**
+     * Method that let hero and enemy attack each other
+     * @param h hero
+     * @param e enemy
+     * @return true if they attack, false if one dies or herob runs away
+     */
     public static boolean fight(Hero h, Enemy e){
         int decision;
         int attack;
         
+        //Create a magical enemy if condition is satisfied
         if (e instanceof Magical) e = (MagicalEnemy) e;
         System.out.println(e.toString());
         
+        //check if hero has potions to use
         if(h.hasPotion()){
             System.out.println("1. Fight.\n2. Run Away.\n3. Drink Health Potion.\n");
             decision = CheckInput.getIntRange(1, 3);
@@ -89,6 +99,7 @@ class Main{
             System.out.println("1. Fight.\n2. Run Away.\n");
             decision = CheckInput.getIntRange(1, 2);
         }
+
         //Fight
         if (decision == 1){
             System.out.println("1.Physical Attack\n2.Magical Attack");
@@ -123,6 +134,7 @@ class Main{
                     }
                 }
             }
+            //end fight if enemy is death and let hero pick up item if possible
             if (e.getHP() < 1) {
                 System.out.println("You defeated the " + e.getName());
                 h.pickUpItem(e.getItem());
@@ -135,6 +147,7 @@ class Main{
             Random rand = new Random();
             int getAway = rand.nextInt(2);
             int run;
+            //Run successfully
             if(getAway == 1){
                 System.out.println(h.getName() + " successfully got away.");
                 if(h.getLocation().x == 0 && h.getLocation().y == 0) h.goEast();
@@ -152,6 +165,7 @@ class Main{
                 }
                 return false;
             }
+            //hero got hity if run failed
             else{
                 System.out.println(e.getName() + " did not let you get away.");
                 System.out.println(e.attack(h));
@@ -164,6 +178,19 @@ class Main{
             h.drinkPotion();
             return true;
         }   
+    }
+
+    /**
+     * Check if current location is a spot that has monster
+     * @param h hero is passed
+     * @param m current map is passed
+     * @param eg enemy generator
+     * @param level enemy's level based on maze level
+     * @return true if this location has a monster, false otherwise
+     */
+    public static boolean monsterRoom(Hero h, Map m, EnemyGenerator eg, int level){
+        if (m.getCharAtLoc(h.getLocation()) == 'm') return true;
+        return false;
     }
 
     /**

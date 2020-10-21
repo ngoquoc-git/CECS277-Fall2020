@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 public class ItemGenerator {
     
+    //Items are stored here after being read from ItemList text file
     private ArrayList<Item> itemList;
 
     /**

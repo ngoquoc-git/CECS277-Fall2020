@@ -4,9 +4,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Random;
 public class EnemyGenerator {
-    
+    //Enemies that are read from EneemyList text file
     private ArrayList<Enemy> enemyList;
-
+    // generate item to pass to enemy
     private ItemGenerator ig;
 
     /**

@@ -3,9 +3,9 @@ import java.util.Random;
 public class Hero extends Entity implements Magical{
     /** Create an array list to store items*/
     private ArrayList<Item> items;
-
+    //Hero map tracker
     private Map map;
-
+    //Hero location
     private Point location;
 
     /**

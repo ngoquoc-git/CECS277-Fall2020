@@ -1,5 +1,6 @@
 import java.util.Random;
 public class Enemy extends Entity{
+    //item that enemy may hold
     private Item item;
 
     /**

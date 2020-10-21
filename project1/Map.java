@@ -5,6 +5,7 @@ public class Map {
     /** Create an axb map */
     private char[][] map;
 
+    //location of that will be reveal
     private boolean[][] revealed;
 
     /**

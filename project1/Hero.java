@@ -121,8 +121,8 @@ public class Hero extends Entity implements Magical{
             if(replaceItem){
                 System.out.println(itemsToString());
                 System.out.print("What will you drop? ");
-                int dropI = CheckInput.getIntRange(0, 4);
-                dropItem(dropI);
+                int dropI = CheckInput.getIntRange(1, 5);
+                dropItem(dropI - 1);
                 items.add(i);
                 return true;
 

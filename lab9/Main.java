@@ -78,7 +78,7 @@ public class Main{
     public static void printForward(LinkedList<String> list){
         ListIterator<String> iter = list.listIterator(list.size()-1);
 		while(iter.hasNext()) {
-			System.out.println(iter.previous());
+			System.out.println(iter.next());
 		}
 		iter.remove();
     }

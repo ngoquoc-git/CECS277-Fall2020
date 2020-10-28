@@ -17,10 +17,11 @@ public class Main{
 
     public static List<String> readFile(){
         List<String> myList = new LinkedList<String>();
-        ListIterator<String> moveIter = new ListIterator();
+        ListIterator<String> it;
         try{
             File readMyFile = new File("words.txt");
             Scanner sc = new Scanner(readMyFile);
+            it = (ListIterator<String>) myList.iterator();
             while (sc.hasNextLine()){
                 String readInput = sc.nextLine();
                 myList.add(readInput);
@@ -33,24 +34,61 @@ public class Main{
         return myList;
     }
 
-    public static void moveIter(){
+    public static void moveIter(ListIterator<String> iter, String word){
+        String wordAtIter = iter.next();
+		if (word.compareTo(wordAtIter) > 0) {
+			while(iter.hasNext() && word.compareTo(wordAtIter) > 0) {
+				wordAtIter = iter.next();
+			}
+		} else {
+			while(iter.hasPrevious() && word.compareTo(wordAtIter) <= 0) {
+				wordAtIter = iter.previous();
+			}
+		}
+    }
+
+    public static void addWord(LinkedList<String> list){
 
     }
 
-    public static void addWord(){
-
+    public static void removeWord(LinkedList<String> list){
+        System.out.println("Enter the word you would like to remove: ");
+		Scanner sc = new Scanner(System.in);
+		String word = sc.next();
+		ListIterator<String> iter = list.listIterator(0);
+		boolean found = false;
+		boolean stop = false;
+		int i = 0;
+		while (iter.hasNext() && !stop) {
+			 if (word.compareTo(iter.next()) < 0) {
+				 i++;
+			 }
+			 else if (word.compareTo(iter.next()) == 0) {
+				 found = true;
+				 list.remove(i);
+			 } else {
+				 stop = true;
+			 }
+		 }
+            if (!found) {
+                System.out.println("The word \"" + word + "\" was not found");
+            }
     }
 
-    public static void removeWord(){
-
+    public static void printForward(LinkedList<String> list){
+        ListIterator<String> iter = list.listIterator(list.size()-1);
+		while(iter.hasNext()) {
+			System.out.println(iter.previous());
+		}
+		iter.remove();
     }
 
-    public static void printForward(){
-
-    }
-
-    public static void printReversed(){
-
+    public static void printReversed(LinkedList<String> list){
+        ListIterator<String> iter = list.listIterator(list.size()-1);
+		while(iter.hasPrevious()) {
+			System.out.println(iter.previous());
+		}
+		iter.remove();
     }
 
     public static int menu(){

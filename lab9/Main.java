@@ -7,11 +7,17 @@ import java.util.Scanner;
 
 public class Main{
     public static void main(String[] args){
-
+        /**switch(action){
+            case 1: printForward(); break;
+            case 2: printReversed(); break;
+            case 3: addWord(); break;
+            case 4: removeWord(); break;
+        }*/
     }
 
     public static List<String> readFile(){
         List<String> myList = new LinkedList<String>();
+        ListIterator<String> moveIter = new ListIterator();
         try{
             File readMyFile = new File("words.txt");
             Scanner sc = new Scanner(readMyFile);
@@ -43,11 +49,13 @@ public class Main{
 
     }
 
-    public static void printReserve(){
+    public static void printReversed(){
 
     }
 
-    public static void menu(){
-
+    public static int menu(){
+        System.out.println("1. Display items.\n2. DisplayItems in reversed order.\n3. Add an item.\n4. Remove an item.");
+        int action = CheckInput.getIntRange(1, 4);
+        return action;
     }
 }

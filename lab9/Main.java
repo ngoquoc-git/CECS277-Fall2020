@@ -4,6 +4,7 @@ import java.util.ListIterator;
 import java.io.FileNotFoundException;
 import java.io.File;
 import java.util.Scanner;
+import java.util.Arrays;
 
 public class Main{
     public static void main(String[] args){
@@ -23,8 +24,7 @@ public class Main{
             Scanner sc = new Scanner(readMyFile);
             it = (ListIterator<String>) myList.iterator();
             while (sc.hasNextLine()){
-                String readInput = sc.nextLine();
-                myList.add(readInput);
+                moveIter(it, sc.nextLine());
             }
         }
         catch (FileNotFoundException e){
@@ -48,7 +48,28 @@ public class Main{
     }
 
     public static void addWord(LinkedList<String> list){
-
+        System.out.println("Enter the word you would like to add: ");
+        Scanner sc = new Scanner(System.in);
+        String word = sc.next();
+		ListIterator<String> iter = list.listIterator(0);
+		boolean found = false;
+		boolean stop = false;
+        int i = 0;
+        
+        while (iter.hasNext() && !stop) {
+            if (word.compareTo(iter.next()) < 0) {
+                i++;
+            }
+            else if (word.compareTo(iter.next()) == 0) {
+                found = true;
+                list.remove(i);
+            } else {
+                stop = true;
+            }
+        }
+           if (!found) {
+               System.out.println("The word \"" + word + "\" was not found");
+           }
     }
 
     public static void removeWord(LinkedList<String> list){

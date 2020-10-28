@@ -8,16 +8,22 @@ import java.util.Arrays;
 
 public class Main{
     public static void main(String[] args){
-        /**switch(action){
-            case 1: printForward(); break;
-            case 2: printReversed(); break;
-            case 3: addWord(); break;
-            case 4: removeWord(); break;
-        }*/
+        LinkedList<String> theList = readFile();
+		int action = menu();
+        switch(action){
+            case 1: printForward(theList); break;
+            case 2: printReversed(theList); break;
+            case 3: addWord(theList); break;
+            case 4: removeWord(theList); break;
+        }
     }
 
-    public static List<String> readFile(){
-        List<String> myList = new LinkedList<String>();
+    /**
+     * Read File and pass everything to a linked list
+     * @return the linked list of string
+     */
+    public static LinkedList<String> readFile(){
+        LinkedList<String> myList = new LinkedList<String>();
         ListIterator<String> it;
         try{
             File readMyFile = new File("words.txt");
@@ -25,6 +31,8 @@ public class Main{
             it = (ListIterator<String>) myList.iterator();
             while (sc.hasNextLine()){
                 moveIter(it, sc.nextLine());
+                String word = sc.nextLine();
+                it.add(word);
             }
         }
         catch (FileNotFoundException e){
@@ -35,7 +43,7 @@ public class Main{
     }
 
     public static void moveIter(ListIterator<String> iter, String word){
-        String wordAtIter = iter.next();
+        /**String wordAtIter = iter.next();
 		if (word.compareTo(wordAtIter) > 0) {
 			while(iter.hasNext() && word.compareTo(wordAtIter) > 0) {
 				wordAtIter = iter.next();
@@ -44,64 +52,53 @@ public class Main{
 			while(iter.hasPrevious() && word.compareTo(wordAtIter) <= 0) {
 				wordAtIter = iter.previous();
 			}
-		}
+        }*/
+        while(iter.hasNext() && iter.next().compareTo(word) != 0){
+            if(iter.hasNext() && iter.next().compareTo(word) > 0) iter.previous();
+            else if(iter.hasNext() && iter.next().compareTo(word) < 0) iter.next();
+
+            if (iter.next().compareTo(word) > 0){
+                iter.previous();
+                if(iter.previous().compareTo(word) < 0){
+                    iter.next();
+                }else iter.next();
+            }
+            else iter.previous();
+        }
     }
 
+    /**
+     * Add a string to the linked list in a alphabetical order
+     * @param list store the current stringsd and the neew string
+     */
     public static void addWord(LinkedList<String> list){
+        ListIterator<String> it = (ListIterator<String>) list.iterator();
         System.out.println("Enter the word you would like to add: ");
         Scanner sc = new Scanner(System.in);
-        String word = sc.next();
-		ListIterator<String> iter = list.listIterator(0);
-		boolean found = false;
-		boolean stop = false;
-        int i = 0;
-        
-        while (iter.hasNext() && !stop) {
-            if (word.compareTo(iter.next()) < 0) {
-                i++;
-            }
-            else if (word.compareTo(iter.next()) == 0) {
-                found = true;
-                list.remove(i);
-            } else {
-                stop = true;
-            }
-        }
-           if (!found) {
-               System.out.println("The word \"" + word + "\" was not found");
-           }
+        String word = sc.nextLine();
+		moveIter(it, word);
     }
 
     public static void removeWord(LinkedList<String> list){
-        System.out.println("Enter the word you would like to remove: ");
-		Scanner sc = new Scanner(System.in);
-		String word = sc.next();
-		ListIterator<String> iter = list.listIterator(0);
-		boolean found = false;
-		boolean stop = false;
-		int i = 0;
-		while (iter.hasNext() && !stop) {
-			 if (word.compareTo(iter.next()) < 0) {
-				 i++;
-			 }
-			 else if (word.compareTo(iter.next()) == 0) {
-				 found = true;
-				 list.remove(i);
-			 } else {
-				 stop = true;
-			 }
-		 }
-            if (!found) {
-                System.out.println("The word \"" + word + "\" was not found");
+        ListIterator<String> it = list.listIterator();
+        System.out.println("Remove Word: ");
+        String usrstring = CheckInput.getString();
+        while(it.hasNext()){
+            if (it.next().equals(usrstring)){
+                it.remove();
             }
+        }
     }
 
+    /**
+     * Display the linked list in alphabetical order
+     * @param list that will be displayed
+     */
     public static void printForward(LinkedList<String> list){
-        ListIterator<String> iter = list.listIterator(list.size()-1);
+        ListIterator<String> iter = (ListIterator<String>) list.iterator();
 		while(iter.hasNext()) {
 			System.out.println(iter.next());
 		}
-		iter.remove();
     }
 
     public static void printReversed(LinkedList<String> list){
@@ -112,6 +109,10 @@ public class Main{
 		iter.remove();
     }
 
+    /**
+     * Display a menu and ask user for action
+     * @return action number
+     */
     public static int menu(){
         System.out.println("1. Display items.\n2. DisplayItems in reversed order.\n3. Add an item.\n4. Remove an item.");
         int action = CheckInput.getIntRange(1, 4);

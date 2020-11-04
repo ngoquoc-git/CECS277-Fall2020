@@ -1,9 +1,10 @@
 import java.util.HashMap;
 import java.util.HashMap;
 import java.util.Random;
+import java.util.Scanner;
 class Main{
     public static void main(String[] args){
-
+        
     }
 
     public static String makePrediction(HashMap<String, Integer> prediction, String pattern){
@@ -29,11 +30,18 @@ class Main{
 
     public static String checkInput(){
         String result = "";
-
-        return result;
+        Scanner sc = new Scanner(System.in);
+        String input = sc.nextLine().toUpperCase();
+        
+        while (input != "X" && input != "O" && input != "Q"){
+            System.out.print("Invalid Input, try again: ");
+            input = sc.nextLine().toUpperCase();
+        }
+        return input;
     }
 
     public static void storeHashMap(HashMap<String, Integer> prediction, String pattern){
-
+        if (prediction.containsKey(pattern))  prediction.put(pattern,prediction.get(pattern) + 1);
+        else prediction.put(pattern, 1);
     }
 }

@@ -4,7 +4,20 @@ import java.util.Random;
 import java.util.Scanner;
 class Main{
     public static void main(String[] args){
-        
+        Scanner sc = new Scanner(System.in);
+        String input, pattern = "";
+        HashMap<String, Integer> prediction = new HashMap<>();
+        int points = 0, rounds = 1;
+        String comp;
+
+        System.out.println("Mind Reader!");
+        input = getInput();
+
+        while (input != "Q"){
+            comp = makePrediction(prediction, pattern);
+            //System.out 
+            if (input == comp) points++;
+        } 
     }
 
     public static String makePrediction(HashMap<String, Integer> prediction, String pattern){
@@ -28,9 +41,10 @@ class Main{
         }
     }
 
-    public static String checkInput(){
+    public static String getInput(){
         String result = "";
         Scanner sc = new Scanner(System.in);
+        System.out.println("Enter X or O, or Q to quit.");
         String input = sc.nextLine().toUpperCase();
         
         while (input != "X" && input != "O" && input != "Q"){

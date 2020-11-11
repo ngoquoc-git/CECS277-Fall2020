@@ -12,6 +12,15 @@ public class DoorFactory{
 
     public void openDoor(int type){
         Door dr = createDoor(type);
-        dr.examine();
+        System.out.println(dr.examine());
+        while(!dr.open()){
+            System.out.println(dr.menu());
+
+            int num = CheckInput.getInt();
+            System.out.println(dr.unlock(num));
+
+            if (!dr.open()) System.out.println(dr.clue());
+        }
+        System.out.println(dr.success());
     }
 }

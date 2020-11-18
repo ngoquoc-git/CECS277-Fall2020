@@ -15,6 +15,6 @@ public abstract class Monster{
         return hp;
     }
 
-    public abstract void attack();
+    public abstract int attack();
 
 }

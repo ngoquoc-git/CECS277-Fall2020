@@ -1,14 +1,11 @@
 public class Fire extends MonsterDecorator{
 
-    public Fire(Monster monster, String n, int h) {
-        super(monster, n, h);
-        // TODO Auto-generated constructor stub
+    public Fire(Monster mon) {
+        super(mon, "Fire "+ mon.getName(), 2 + mon.getHP());
     }
 
     @Override
     public int attack() {
-        // TODO Auto-generated method stub
-        return 0;
+        return 3 + super.attack();
     }
-    
 }

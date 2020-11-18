@@ -1,14 +1,11 @@
 public class Electro extends MonsterDecorator{
 
-    public Electro(Monster monster, String n, int h) {
-        super(monster, n, h);
-        // TODO Auto-generated constructor stub
+    public Electro(Monster mon) {
+        super(mon, "Electro "+ mon.getName(), 2 + mon.getHP());
     }
 
     @Override
     public int attack() {
-        // TODO Auto-generated method stub
-        return 0;
+        return 2 + super.attack();
     }
-    
 }

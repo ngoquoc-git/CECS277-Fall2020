@@ -1,14 +1,11 @@
 public class Ice extends MonsterDecorator{
 
-    public Ice(Monster monster, String n, int h) {
-        super(monster, n, h);
-        // TODO Auto-generated constructor stub
+    public Ice(Monster mon) {
+        super(mon, "Ice "+ mon.getName(), 2 + mon.getHP());
     }
 
     @Override
     public int attack() {
-        // TODO Auto-generated method stub
-        return 0;
+        return 1 + super.attack();
     }
-    
 }

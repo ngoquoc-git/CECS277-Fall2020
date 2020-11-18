@@ -3,7 +3,7 @@ public class Beast extends Monster{
     private int damage;
 
     public Beast(){
-        super("Beast Master", 3);
+        super("Beast Master ", 10);
         damage = 3;
     }
 

@@ -3,7 +3,7 @@ public class Alien extends Monster{
     private int damage;
 
     public Alien(){
-        super("Alien", 4);
+        super("Alien ",12);
         damage = 2;
     }
 

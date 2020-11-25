@@ -1,7 +1,3 @@
-/**
- * what do we do in the asleep state when the other states are called
- *
- */
 public class AsleepState implements PuppyState{
     /**
      * 

@@ -1,4 +1,8 @@
 public class Main {
+    /**
+     * The whole projrect is executed here
+     * @param args null
+     */
     public static void main(String[] args){
         int dec;
         Puppy pup = new Puppy();

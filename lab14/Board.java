@@ -25,14 +25,15 @@ public class Board {
      */
     public void display(){
         System.out.println(" 0  1  2");
-        System.out.println("------");
+        System.out.println(" --------");
         for (int i = 0; i < board.length; i++){
             System.out.print(i + "|");
             for (int j = 0; j < board[i].length; j++){
                 System.out.print(board[i][j] + "|");
             }
+            System.out.println();
         }
-        System.out.println("------");
+        System.out.println(" --------");
     }
 
     /**
@@ -45,12 +46,16 @@ public class Board {
 
     /**
      * 
-     * @param m
+     * @param object
      */
     public void restore(Memento m){
         board = m.getState();
     }
 
+    /**
+     * 
+     * @return
+     */
     public char winner(){
         boolean isFull = false;
         boolean isWin = false;
@@ -73,7 +78,7 @@ public class Board {
 
         //Check win condition horizontally
         for (rw = 0; rw < 3; rw++){
-            if(board[rw][0] == board[rw][1] && board[rw][0] == board[rw][2]){
+            if(board[rw][0] == board[rw][1] && board[rw][0] == board[rw][2] && board[rw][0] != ' '){
                 isWin = true;
                 winToken = board[rw][0];
                 break;
@@ -81,18 +86,18 @@ public class Board {
         }
         //Check win condition vertically
         for (cl = 0; cl < 3; cl++){
-            if(board[0][cl] == board[1][cl] && board[0][cl] == board[2][cl]){
+            if(board[0][cl] == board[1][cl] && board[0][cl] == board[2][cl] && board[cl][0] != ' '){
                 isWin = true;
                 winToken = board[0][cl];
                 break;
             }
         }
         //Check win condition diagonally
-        if(board[1][1] == board[0][0] && board[1][1] == board[2][2]){
+        if(board[1][1] == board[0][0] && board[1][1] == board[2][2] && board[1][1] != ' '){
             isWin = true;
             winToken = board[1][1];
         }
-        if(board[1][1] == board[0][2] && board[1][1] == board[2][0]){
+        if(board[1][1] == board[0][2] && board[1][1] == board[2][0] && board[1][1] != ' '){
             isWin = true;
             winToken = board[1][1];
         }

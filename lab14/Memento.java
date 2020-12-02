@@ -11,7 +11,7 @@ public class Memento {
     public Memento(char[][] b){
         for(int i = 0; i < b.length; i++){
             for (int j = 0; j < b[i].length; j++){
-                this.board[i][j] = b [i][j];
+                this.board[i][j] = b[i][j];
             }
         }
     }

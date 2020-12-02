@@ -86,17 +86,17 @@ public class Board {
 
         //Check win condition horizontally
         for (rw = 0; rw < 3; rw++){
-            if(board[rw][0] == board[rw][1] && board[rw][0] == board[rw][2] && board[rw][0] != ' '){
+            if(board[rw][0] == board[rw][1] && board[rw][1] == board[rw][2] && (board[rw][0] != ' ' || board[rw][1] != ' '|| board[rw][2] != ' ')){
                 isWin = true;
-                winToken = board[rw][0];
+                winToken = board[rw][1];
                 break;
             }
         }
         //Check win condition vertically
         for (cl = 0; cl < 3; cl++){
-            if(board[0][cl] == board[1][cl] && board[0][cl] == board[2][cl] && board[0][cl] != ' '){
+            if(board[0][cl] == board[1][cl] && board[1][cl] == board[2][cl] && (board[0][cl] != ' ' || board[1][cl] != ' '|| board[2][cl] != ' ')){
                 isWin = true;
-                winToken = board[0][cl];
+                winToken = board[1][cl];
                 break;
             }
         }

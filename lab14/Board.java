@@ -86,7 +86,7 @@ public class Board {
         }
         //Check win condition vertically
         for (cl = 0; cl < 3; cl++){
-            if(board[0][cl] == board[1][cl] && board[0][cl] == board[2][cl] && board[cl][0] != ' '){
+            if(board[0][cl] == board[1][cl] && board[0][cl] == board[2][cl] && board[0][cl] != ' '){
                 isWin = true;
                 winToken = board[0][cl];
                 break;

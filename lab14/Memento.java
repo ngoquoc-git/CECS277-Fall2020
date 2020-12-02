@@ -2,7 +2,7 @@ public class Memento {
     /**
      * 
      */
-    private char[][] board;
+    private char[][] board = new char[3][3];
 
     /**
      * 

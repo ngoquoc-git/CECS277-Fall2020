@@ -50,4 +50,9 @@ public class Board {
     public void restore(Memento m){
         board = m.getState();
     }
+
+    public char winner(){
+        
+        return 'a';
+    }
 }

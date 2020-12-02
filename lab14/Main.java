@@ -64,7 +64,11 @@ public class Main {
 			System.out.println("3. quit");
             input = CheckInput.getIntRange(1,3);
             if(input == 3) System.out.println("Game Over");
-		} while(input != 3);
+        } while(b.winner() == ' ' && input != 3);
+        
+        if(b.winner() == 'x') System.out.println("Player 1 wins.");
+        else if(b.winner() == 'o') System.out.println("Player 2 wins.");
+        else System.out.println("The board is fully filled and there is no winner.");
     }
 
     public static void playerVcomp(Board b, Stack<Memento> history){

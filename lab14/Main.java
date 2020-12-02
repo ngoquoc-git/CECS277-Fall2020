@@ -1,5 +1,9 @@
 import java.util.Stack;
 
+/**
+* group 10 Lab 14
+* @author Rivera, Corrine and Quoc Ngo
+*/
 public class Main {
     public static void main(String[] args){
         Stack <Memento> history = new Stack <Memento>();

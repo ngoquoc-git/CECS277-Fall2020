@@ -119,7 +119,6 @@ public class Main {
             }
             else {
                 botEasy(b);
-                //b.display();
                 history.push(b.save());
                 turns++;
             }

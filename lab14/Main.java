@@ -36,11 +36,12 @@ public class Main {
 				System.out.print("Row: ");
 				inputR = CheckInput.getIntRange(0,2);
 				System.out.print("Col: ");
-				inputC = CheckInput.getIntRange(0,2);
+                inputC = CheckInput.getIntRange(0,2);
+                
+                if(token == 'x') history.push(b.save());
 
 				if(b.placeToken(token, inputR, inputC)) {
                     turns++;
-                    if(token == 'o') history.push(b.save());
                 }
                 else System.out.println("invalid location");
 				

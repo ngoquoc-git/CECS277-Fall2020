@@ -9,7 +9,11 @@ public class Memento {
      * @param b
      */
     public Memento(char[][] b){
-        this.board = b;
+        for(int i = 0; i < b.length; i++){
+            for (int j = 0; j < b[i].length; j++){
+                this.board[i][j] = b [i][j];
+            }
+        }
     }
 
     /**

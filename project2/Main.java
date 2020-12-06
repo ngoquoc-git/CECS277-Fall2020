@@ -28,8 +28,7 @@ class Main{
         //Get user's name and load map
         System.out.print("What is your name traveler? ");
         heroName = CheckInput.getString();
-        mapSelection= rand.nextInt(mazeLevels.length);
-        map.loadMap(mazeLevels[mapSelection]);
+        map.loadMap(mazeLevels[level + 1]);
         myHero = new Hero(heroName, map);
 
         //Loop to break the game if plaer decide to quit, hero dies, or complete 3 levels
@@ -59,8 +58,7 @@ class Main{
                 else if (map.getCharAtLoc(myHero.getLocation()) == 'f') {
                     level++;
                     System.out.println("You have reached the finish point. Move on to the next level. \n");
-                    mapSelection = rand.nextInt(3);
-                    map.loadMap(mazeLevels[mapSelection]);
+                    map.loadMap(mazeLevels[level]);
                     myHero.heal(myHero.getMaxHP());
                     if(level < 4) System.out.println ("Level: " + level); 
                 }
@@ -166,7 +164,7 @@ class Main{
                 }
                 return false;
             }
-            //hero got hity if run failed
+            //hero got hit if run failed
             else{
                 System.out.println(e.getName() + " did not let you get away.");
                 System.out.println(e.attack(h));

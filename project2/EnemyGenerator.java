@@ -25,7 +25,7 @@ public class EnemyGenerator {
             while(enemy.hasNextLine()){
                 String properties = enemy.nextLine();
                 String[] enemyInfo = properties.split(",");
-                if(enemyInfo[2] == "m"){
+                if(enemyInfo[2].equals("m")){
                     Enemy magicE = new MagicalEnemy(enemyInfo[0], Integer.parseInt(enemyInfo[1]), this.ig.generateItem());
                     enemyList.add(magicE);
                 }

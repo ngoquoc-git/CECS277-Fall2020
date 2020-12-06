@@ -1,3 +1,4 @@
+//Abstract class is shared between both hero and enemies
 public abstract class Entity {
     /**Entity's name*/
     private String name;

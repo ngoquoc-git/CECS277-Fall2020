@@ -1,4 +1,5 @@
 import java.util.Random;
+//Enemy representation which is inherited from class Enity
 public class Enemy extends Entity{
     //item that enemy may hold
     private Item item;

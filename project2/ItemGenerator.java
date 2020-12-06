@@ -3,6 +3,7 @@ import java.util.Random;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+//Generate Item from a given Item text file
 public class ItemGenerator {
     
     //Items are stored here after being read from ItemList text file

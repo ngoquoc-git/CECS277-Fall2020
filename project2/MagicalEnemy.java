@@ -1,4 +1,5 @@
 import java.util.Random;
+//Enemy that only haa magical skills
 public class MagicalEnemy extends Enemy implements Magical{
     
     /**

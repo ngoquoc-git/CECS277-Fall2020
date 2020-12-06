@@ -1,3 +1,4 @@
+//Class holds Item's name
 public class Item {
     /**Item's name */
     private String name;

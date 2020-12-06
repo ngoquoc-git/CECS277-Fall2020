@@ -1,3 +1,4 @@
+// Interface holds Magical attacks for hero and enemies
 public interface Magical {
     
     //Show magic skills to be used

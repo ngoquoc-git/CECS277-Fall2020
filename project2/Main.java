@@ -4,6 +4,7 @@
  * Authors: Quoc Ngo, Alnahwi Abdullah
  */
 import java.util.Random;
+//Monstyer Dungeon game is executed
 class Main{
     /**
      * The whole program will be executed here

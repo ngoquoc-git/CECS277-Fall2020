@@ -3,6 +3,7 @@ import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Random;
+//Generate each enemy from a given text file
 public class EnemyGenerator {
     //Enemies that are read from EneemyList text file
     private ArrayList<Enemy> enemyList;

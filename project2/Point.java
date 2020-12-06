@@ -1,3 +1,4 @@
+//Store location with x and y location
 public class Point {
     // location at x - row
     public int x;

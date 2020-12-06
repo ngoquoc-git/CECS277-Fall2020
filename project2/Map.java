@@ -1,6 +1,7 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+//Generate map fropm a given Map text file
 public class Map {
     /** Create an axb map */
     private char[][] map;

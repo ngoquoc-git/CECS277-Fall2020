@@ -1,5 +1,10 @@
 import java.util.ArrayList;
 import java.util.Random;
+/**
+ * Property for hero 
+ * Hero's property (HP and Name) is inherited from Entity class
+ * Hero uses Magical interface to give Hero magiocal attacks
+ */
 public class Hero extends Entity implements Magical{
     /** Create an array list to store items*/
     private ArrayList<Item> items;

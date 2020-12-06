@@ -13,7 +13,6 @@ class Main{
     public static void main(String[] args){
         // All variables are decalred here
         Map map = new Map();
-        Random rand = new Random();
         ItemGenerator ig = new ItemGenerator();
         EnemyGenerator eg = new EnemyGenerator(ig);
         Enemy enemy;
@@ -21,7 +20,6 @@ class Main{
         int level = 1;
         int[] mazeLevels = { 1, 2, 3 };
         String heroName;
-        int mapSelection;
         boolean endGame  = false;
         Hero myHero;
 

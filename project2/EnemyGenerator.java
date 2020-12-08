@@ -31,8 +31,8 @@ public class EnemyGenerator {
                             EnemyGenerator.ig.generateItem());
                     enemyList.add(magicE);
                 } else {
-                    Enemy physE = new Enemy(enemyInfo[0], Integer.parseInt(enemyInfo[1]), EnemyGenerator.ig.generateItem());
-                    enemyList.add(physE);
+                    //Enemy physE = new Enemy(enemyInfo[0], Integer.parseInt(enemyInfo[1]), EnemyGenerator.ig.generateItem());
+                    //enemyList.add(physE);
                 }
             }
             enemy.close();
@@ -41,27 +41,20 @@ public class EnemyGenerator {
         }
     }
 
+    /**
+     * 
+     * @return
+     */
     public static EnemyGenerator getInstance(){
         if (instance == null) instance = new EnemyGenerator(ig);
         return instance;
     }
 
     /**
-     * Call a random enemy from the enemyList
-     * Magical enemy may get stronger if its level is higher
-     * @return either a physical enemy or a magical enemy
+     * 
+     * @return 
      */
     public Enemy generateEnemy(int level){
-        Random rand = new Random();
-        int enemyGen = rand.nextInt(enemyList.size());
-
-        if(enemyList.get(enemyGen) instanceof MagicalEnemy){
-            Enemy magicE = new MagicalEnemy(enemyList.get(enemyGen).getName(), enemyList.get(enemyGen).getMaxHP() + level, enemyList.get(enemyGen).getItem());
-            return magicE;
-        }
-        else{
-            Enemy physE = new Enemy(enemyList.get(enemyGen).getName(), enemyList.get(enemyGen).getMaxHP() + level, enemyList.get(enemyGen).getItem());
-            return physE;
-        }
+        return null;
     }
 }

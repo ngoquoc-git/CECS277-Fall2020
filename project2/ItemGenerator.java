@@ -19,9 +19,10 @@ public class ItemGenerator{
         File readItem = new File("ItemList.txt");
         try{
             Scanner items = new Scanner(readItem);
+            String read = items.nextLine();
+            String[] splitStr = read.split(",");
             while(items.hasNextLine()){
-                Item currItem = new Item(items.nextLine());
-                itemList.add(currItem);
+                itemList.add(new Item(splitStr[0], Integer.parseInt(splitStr[1]), splitStr[2].charAt(0))); 
             }
             items.close();
         }
@@ -40,15 +41,32 @@ public class ItemGenerator{
     }
 
     /**
-     * Call a random item from itemList in order to pass to an enemy 
-     * @return a random item
+     * 
+     * @return
      */
     public Item generateItem(){
         Random rand = new Random();
         int itemGen = rand.nextInt(itemList.size());
-        Item item = new Item(itemList.get(itemGen).getName());
-        return item;
+        return (Item) itemList.get(itemGen).clone();
     }
 
+    public Item getPotion() {
+        Item potion = new Item(null, 0, ' ');
+        for(int i=0; i < itemList.size(); i++) {
+            if(itemList.get(i).getType() == 'p') {
+                potion = itemList.get(i);
+            }
+        }
+        return potion;   
+    }
 
+    public Item getKey() {
+        Item key = new Item(null, 0, ' ');
+        for(int i=0; i < itemList.size(); i++) {
+            if(itemList.get(i).getType() == 'p') {
+                key = itemList.get(i);
+            }
+        }
+        return key;   
+    }
 }

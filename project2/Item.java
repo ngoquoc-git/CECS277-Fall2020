@@ -1,5 +1,5 @@
 //Class holds Item's name
-public abstract class Item {
+public class Item implements Cloneable{
     /**Item's name */
     private String name;
     /** */
@@ -9,15 +9,34 @@ public abstract class Item {
 
     /**
      * 
+     * @param n
+     * @param v
+     * @param t
      */
-    public abstract Item clone();
+    public Item(String n, int v, char t){
+        name = n;
+        value = v;
+        type = t;
+    }
 
     /**
-     * Pass item's name to the Sring name
-     * @param name Item's name
+     * 
+     * @param it
      */
-    public Item(String name){
-        this.name = name;
+    public Item(Item it){
+        if(it != null) {
+            name = it.getName();
+            value = it.getValue();
+            type = it.getType();
+        }
+    }
+
+    /**
+     * 
+     */
+    @Override
+    public Cloneable clone(){
+        return new Item(this);
     }
 
     /**

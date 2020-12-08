@@ -25,16 +25,13 @@ public abstract class Enemy extends Entity{
     }
 
     /**
-     * Enemy attacks entity e
-     * @param e entity that will be attcked
-     * @return s String represents the attacking status 
-     */
-    @Override
-    public String attack(Entity e){
-        Random rand = new Random();
+     *
+     */    
+    public abstract String attack(Entity e);
+
+    /**Random rand = new Random();
         int damage = rand.nextInt(8);
         e.takeDamage(damage);
         if (damage == 0) return "Enemy hits you, but it is missed";
-        return getName() + " hits you and does " + damage + " damages.\n";
-    }
+        return getName() + " hits you and does " + damage + " damages.\n"; */
 }

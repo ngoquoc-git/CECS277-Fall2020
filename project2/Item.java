@@ -1,11 +1,16 @@
 //Class holds Item's name
-public class Item {
+public abstract class Item {
     /**Item's name */
     private String name;
     /** */
     private int value;
     /** */
     private char type;
+
+    /**
+     * 
+     */
+    public abstract Item clone();
 
     /**
      * Pass item's name to the Sring name

@@ -177,6 +177,12 @@ class Main{
         }   
     }
 
+    public static void store(Hero h, Map m, int decision){
+        if(m.getCharAtLoc(h.getLocation()) == 's'){
+
+        }
+    }
+
     /**
      * Check if current location is a spot that has monster
      * @param h hero is passed

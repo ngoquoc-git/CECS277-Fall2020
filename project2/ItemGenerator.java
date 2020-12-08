@@ -50,6 +50,10 @@ public class ItemGenerator{
         return (Item) itemList.get(itemGen).clone();
     }
 
+    /**
+     * 
+     * @return
+     */
     public Item getPotion() {
         Item potion = new Item(null, 0, ' ');
         for(int i=0; i < itemList.size(); i++) {
@@ -59,7 +63,11 @@ public class ItemGenerator{
         }
         return potion;   
     }
-
+    
+    /**
+     * 
+     * @return
+     */
     public Item getKey() {
         Item key = new Item(null, 0, ' ');
         for(int i=0; i < itemList.size(); i++) {

@@ -13,6 +13,8 @@ public class Hero extends Entity implements Magical{
     //Hero location
     private Point location;
 
+    private int gold;
+
     /**
      * Overloaded Constructor
      * Create a new item and find start point for hero
@@ -24,6 +26,18 @@ public class Hero extends Entity implements Magical{
         items = new ArrayList<Item>();
         map = m;
         location = map.findStart();
+    }
+
+    public int getGold() {
+        return gold;
+    }
+
+    public void collectGold(int g){
+        gold+=g;
+    }
+
+    public void spendGold(int g){
+        gold-=g;
     }
 
     /**

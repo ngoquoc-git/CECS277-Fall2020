@@ -18,7 +18,7 @@ public class EnemyGenerator {
      * @param ig pass items to enemy
      */
     private EnemyGenerator(ItemGenerator ig) {
-        this.ig = ig;
+        EnemyGenerator.ig = ig;
         enemyList = new ArrayList<>();
         File enemyGene = new File("EnemyList.txt");
         try {
@@ -28,10 +28,10 @@ public class EnemyGenerator {
                 String[] enemyInfo = properties.split(",");
                 if (enemyInfo[2].equals("m")) {
                     Enemy magicE = new MagicalEnemy(enemyInfo[0], Integer.parseInt(enemyInfo[1]),
-                            this.ig.generateItem());
+                            EnemyGenerator.ig.generateItem());
                     enemyList.add(magicE);
                 } else {
-                    Enemy physE = new Enemy(enemyInfo[0], Integer.parseInt(enemyInfo[1]), this.ig.generateItem());
+                    Enemy physE = new Enemy(enemyInfo[0], Integer.parseInt(enemyInfo[1]), EnemyGenerator.ig.generateItem());
                     enemyList.add(physE);
                 }
             }

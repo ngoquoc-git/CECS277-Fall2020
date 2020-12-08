@@ -12,7 +12,7 @@ public class Hero extends Entity implements Magical{
     private Map map;
     //Hero location
     private Point location;
-
+    //** */
     private int gold;
 
     /**
@@ -28,14 +28,26 @@ public class Hero extends Entity implements Magical{
         location = map.findStart();
     }
 
+    /**
+     * 
+     * @return
+     */
     public int getGold() {
         return gold;
     }
 
+    /**
+     * 
+     * @param g
+     */
     public void collectGold(int g){
         gold+=g;
     }
 
+    /**
+     * 
+     * @param g
+     */
     public void spendGold(int g){
         gold-=g;
     }

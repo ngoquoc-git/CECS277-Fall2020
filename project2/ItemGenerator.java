@@ -5,7 +5,8 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 //Generate Item from a given Item text file
 public class ItemGenerator {
-    
+    //** */
+    private static ItemGenerator instance = null;
     //Items are stored here after being read from ItemList text file
     private ArrayList<Item> itemList;
 
@@ -13,7 +14,7 @@ public class ItemGenerator {
      * Default Constructor
      * Read through ItemList.txt file and pass each item to itemList
      */
-    public ItemGenerator(){
+    private ItemGenerator(){
         itemList = new ArrayList<Item>();
         File readItem = new File("ItemList.txt");
         try{
@@ -30,6 +31,15 @@ public class ItemGenerator {
     }
 
     /**
+     * 
+     * @return
+     */
+    public static ItemGenerator getInstance(){
+        if (instance == null) instance = new ItemGenerator();
+        return instance; 
+    }
+
+    /**
      * Call a random item from itemList in order to pass to an enemy 
      * @return a random item
      */
@@ -40,5 +50,5 @@ public class ItemGenerator {
         return item;
     }
 
-    
+
 }

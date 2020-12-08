@@ -8,37 +8,42 @@ public class EnemyGenerator {
     //Enemies that are read from EneemyList text file
     private ArrayList<Enemy> enemyList;
     // generate item to pass to enemy
-    private ItemGenerator ig;
+    private static ItemGenerator ig;
+    /** */
+    private static EnemyGenerator instance = null;
 
     /**
-     * Overloaded Constructor
-     * Get enemy from the nenemy list
-     * create them by given information
+     * Overloaded Constructor 
+     * Get enemy from the nenemy list create them by given information
      * @param ig pass items to enemy
      */
-    public EnemyGenerator(ItemGenerator ig){
+    private EnemyGenerator(ItemGenerator ig) {
         this.ig = ig;
         enemyList = new ArrayList<>();
         File enemyGene = new File("EnemyList.txt");
-        try{
+        try {
             Scanner enemy = new Scanner(enemyGene);
-            while(enemy.hasNextLine()){
+            while (enemy.hasNextLine()) {
                 String properties = enemy.nextLine();
                 String[] enemyInfo = properties.split(",");
-                if(enemyInfo[2].equals("m")){
-                    Enemy magicE = new MagicalEnemy(enemyInfo[0], Integer.parseInt(enemyInfo[1]), this.ig.generateItem());
+                if (enemyInfo[2].equals("m")) {
+                    Enemy magicE = new MagicalEnemy(enemyInfo[0], Integer.parseInt(enemyInfo[1]),
+                            this.ig.generateItem());
                     enemyList.add(magicE);
-                }
-                else{
+                } else {
                     Enemy physE = new Enemy(enemyInfo[0], Integer.parseInt(enemyInfo[1]), this.ig.generateItem());
                     enemyList.add(physE);
                 }
             }
             enemy.close();
-        }
-        catch (FileNotFoundException e){
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+    }
+
+    public static EnemyGenerator getInstance(){
+        if (instance == null) instance = new EnemyGenerator(ig);
+        return instance;
     }
 
     /**

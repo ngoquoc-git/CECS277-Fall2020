@@ -9,12 +9,24 @@ public class Map {
     //location of that will be reveal
     private boolean[][] revealed;
 
+    /** */
+    private static Map instance = null;
+
     /**
      * Default constructor create a 5x5 map
      */
-    public Map(){
+    private Map(){
         map = new char[5][5];
         revealed = new boolean[5][5];
+    }
+
+    /**
+     * 
+     * @return
+     */
+    public static Map getInstance(){
+        if (instance == null) instance = new Map();
+        return instance;
     }
 
     /**

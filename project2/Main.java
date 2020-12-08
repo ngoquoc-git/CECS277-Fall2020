@@ -12,9 +12,9 @@ class Main{
      */
     public static void main(String[] args){
         // All variables are decalred here
-        Map map = new Map();
-        ItemGenerator ig = new ItemGenerator();
-        EnemyGenerator eg = new EnemyGenerator(ig);
+        Map map = Map.getInstance();
+        ItemGenerator ig = ItemGenerator.getInstance();
+        EnemyGenerator eg = EnemyGenerator.getInstance();
         Enemy enemy;
         int decision;
         int level = 1;
@@ -192,8 +192,54 @@ class Main{
      * @return true if this location has a monster, false otherwise
      */
     public static boolean monsterRoom(Hero h, Map m, EnemyGenerator eg, int level){
-        if (m.getCharAtLoc(h.getLocation()) == 'm') return true;
-        return false;
+        Enemy e = eg.generateEnemy(level);
+        m.reveal( h.getLocation() );
+        if( fight(h, e) ){
+            m.removeCharAtLoc( h.getLocation() );
+            if ( h.getHP() <= 0 ){
+                System.out.println( "You died." );
+                return false;
+            }
+        }
+        else{
+            boolean loopFlag = true;
+            //stores the character at the hero's position after running away
+            char event = 'e';
+            //while loop looks for valid direction, excludes any option that has 'w' event
+            while(loopFlag){
+                int r = (int)(Math.random() * 4);
+                switch (r){
+                    case 0:
+                        event = h.goNorth();
+                        if( !(event == 'w') ){
+                            loopFlag = false;
+                        }
+                        break;
+                    case 1:
+                        event = h.goSouth();
+                        if( !(event == 'w') ){
+                            loopFlag = false;
+                        }
+                        break;
+                    case 2:
+                        event = h.goEast();
+                        if( !(event == 'w') ){
+                            loopFlag = false;
+                        }
+                        break;
+                    case 3:
+                        event = h.goWest();
+                        if( !(event == 'w') ){
+                            loopFlag = false;
+                        }
+                        break;
+                }
+            }
+            if (event == 'm'){
+                return monsterRoom(h, m, eg, level);
+            }
+        }
+        return true;
     }
 
     /**

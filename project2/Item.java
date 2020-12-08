@@ -2,6 +2,10 @@
 public class Item {
     /**Item's name */
     private String name;
+    /** */
+    private int value;
+    /** */
+    private char type;
 
     /**
      * Pass item's name to the Sring name
@@ -17,5 +21,21 @@ public class Item {
      */
     public String getName(){
         return name;
+    }
+
+    /**
+     * 
+     * @return
+     */
+    public int getValue(){
+        return value;
+    }
+
+    /**
+     * 
+     * @return
+     */
+    public char getType(){
+        return type;
     }
 }

@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 //Generate Item from a given Item text file
-public class ItemGenerator {
+public class ItemGenerator extends Item{
     //** */
     private static ItemGenerator instance = null;
     //Items are stored here after being read from ItemList text file
@@ -28,6 +28,18 @@ public class ItemGenerator {
         catch (FileNotFoundException e){
             e.printStackTrace();
         }
+    }
+
+    private ItemGenerator(ItemGenerator ig){
+
+    }
+
+    /**
+     * 
+     */
+    @Override
+    public Item clone(){
+        return new ItemGenerator(getInstance());
     }
 
     /**

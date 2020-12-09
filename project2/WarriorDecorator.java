@@ -1,3 +1,5 @@
+import java.util.Random;
+
 /**
  * 
  */
@@ -19,8 +21,11 @@ public abstract class WarriorDecorator extends Enemy{
     }
 
     public String attack(Entity e){
-        //e.takeDamage(2);
-        return null;
+        Random rand = new Random();
+        int damage = rand.nextInt(8);
+        e.takeDamage(damage);
+        if (damage == 0) return "Enemy hits you, but it is missed";
+        return getName() + " hits you and does " + damage + " damages.\n";
     }
     
 }

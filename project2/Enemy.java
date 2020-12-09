@@ -28,10 +28,4 @@ public abstract class Enemy extends Entity{
      *
      */    
     public abstract String attack(Entity e);
-
-    /**Random rand = new Random();
-        int damage = rand.nextInt(8);
-        e.takeDamage(damage);
-        if (damage == 0) return "Enemy hits you, but it is missed";
-        return getName() + " hits you and does " + damage + " damages.\n"; */
 }

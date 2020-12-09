@@ -21,18 +21,6 @@ public class Item implements Cloneable{
 
     /**
      * 
-     * @param it
-     */
-    public Item(Item it){
-        if(it != null) {
-            name = it.getName();
-            value = it.getValue();
-            type = it.getType();
-        }
-    }
-
-    /**
-     * 
      */
     @Override
     public Cloneable clone(){

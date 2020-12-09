@@ -18,7 +18,6 @@ class Main{
         Enemy enemy;
         int decision;
         int level = 1;
-        int[] mazeLevels = { 1, 2, 3 };
         String heroName;
         boolean endGame  = false;
         Hero myHero;
@@ -26,7 +25,7 @@ class Main{
         //Get user's name and load map
         System.out.print("What is your name traveler? ");
         heroName = CheckInput.getString();
-        map.loadMap(mazeLevels[level + 1]);
+        map.loadMap(level + 1);
         myHero = new Hero(heroName, map);
 
         //Loop to break the game if plaer decide to quit, hero dies, or complete 3 levels
@@ -59,7 +58,7 @@ class Main{
                 else if (map.getCharAtLoc(myHero.getLocation()) == 'f') {
                     level++;
                     System.out.println("You have reached the finish point. Move on to the next level. \n");
-                    map.loadMap(mazeLevels[level]);
+                    map.loadMap(level + 1);
                     myHero.heal(myHero.getMaxHP());
                     if(level < 4) System.out.println ("Level: " + level); 
                 }

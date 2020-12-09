@@ -3,7 +3,7 @@ import java.util.Random;
 public class Froglock extends Enemy {
 
     public Froglock() {
-        super();
+        super("Froglock ", 5, ItemGenerator.getInstance().generateItem());
     }
 
     @Override

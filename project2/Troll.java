@@ -3,7 +3,7 @@ import java.util.Random;
 public class Troll extends Enemy {
 
     public Troll() {
-        super();
+        super("Troll ", 5, ItemGenerator.getInstance().generateItem());
     }
 
     @Override

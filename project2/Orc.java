@@ -2,8 +2,9 @@ import java.util.Random;
 
 public class Orc extends Enemy {
 
+
     public Orc() {
-        super();
+        super("Orc ", 5, ItemGenerator.getInstance().generateItem());
     }
 
     @Override

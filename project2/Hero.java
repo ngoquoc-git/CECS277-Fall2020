@@ -29,24 +29,24 @@ public class Hero extends Entity implements Magical{
     }
 
     /**
-     * 
-     * @return
+     getGold method returns the amount of Gold
+     * @return amount
      */
     public int getGold() {
         return gold;
     }
 
     /**
-     * 
-     * @param g
+     * collectGold mehtod - calculates the gold the hero have plus the "g " gold collected 
+     * @param g - gold collected 
      */
     public void collectGold(int g){
         gold+=g;
     }
 
     /**
-     * 
-     * @param g
+     * Use in-game gold
+     * @param g current amount of gold
      */
     public void spendGold(int g){
         gold-=g;
@@ -260,7 +260,8 @@ public class Hero extends Entity implements Magical{
     }
 
     /**
-     * 
+     * Method to use key to get to a higher level
+     * Key will be removed after being used
      */
     public void useKey(){
         for (int i = 0; i < this.items.size();i++){
@@ -271,8 +272,8 @@ public class Hero extends Entity implements Magical{
     }
 
     /**
-     * 
-     * @return
+     * Check if hero has key to proccess
+     * @return true if has key false otherwise
      */
     public boolean hasKey(){
         for (int i = 0; i < this.items.size();i++){
@@ -283,6 +284,10 @@ public class Hero extends Entity implements Magical{
         return false;
     }
 
+    /**
+     * check if hero has armor
+     * @return the first index of the amor 
+     */
     public int hasArmorItem(){
         for (int i = 0; i < this.items.size();i++){
             if (items.get(i).getType() == 'a') {

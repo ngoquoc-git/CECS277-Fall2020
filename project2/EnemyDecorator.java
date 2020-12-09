@@ -1,16 +1,16 @@
 import java.util.Random;
 
-/** */
+/** abstract class EnemyDecorator which extends from Enemy */
 public abstract class EnemyDecorator extends Enemy{
     
-    /** */
+    /** instance variable en which represent enemy */
     private Enemy en;
     
     /**
-     * 
-     * @param enemy
-     * @param name
-     * @param mHP
+     * EnemyDecorator constructor - create a template for Warlock and Warrior
+     * @param enemy - the enemy
+     * @param name - enemy's name
+     * @param mHP - enemy's initial health points
      */
     public EnemyDecorator(Enemy enemy, String name, int mHP){
         super(name, mHP, enemy.getItem());
@@ -18,9 +18,9 @@ public abstract class EnemyDecorator extends Enemy{
     }
 
     /**
-     * 
-     * @param e
-     * @return
+     * Attack action that deal damage to an entity
+     * @param e entity that will take damage
+     * @return attack status in String
      */
     public String attack(Entity e){
         Random rand = new Random();

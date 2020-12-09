@@ -1,7 +1,11 @@
 /**
  * Class: CECS 277
- * Project : Project 1
+ * Project : Project 2
  * Authors: Quoc Ngo, Alnahwi Abdullah
+ * Date : December 8 2020
+ * Project Description : The program is a Monster dungeon 
+ * game modified from project 1. the modify includes adding a store where the hero can visit ,
+ *  the hero has now money as well and many more feautres added to the program. the program incorporates design patterns to better the design of the program. 
  */
 import java.util.Random;
 //Monstyer Dungeon game is executed
@@ -208,6 +212,10 @@ class Main{
         }
     }
 
+    /**
+     * Create a store for buy and sell items
+     * @param h
+     */
     public static void store(Hero h){
         
         int dec;

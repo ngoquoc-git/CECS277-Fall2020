@@ -1,18 +1,20 @@
 import java.util.Random;
 
-/** */
+/**WarlockDecorator class whoich extends EnemyDecorator and implements Magical */
 public class WarlockDecorator extends EnemyDecorator implements Magical {
 
     /**
-     * 
-     * @param enemy
+     * WarlockDecorator Constructor gets the name of the enemy and max health 	 points 
+     * @param enemy - the enemy
      */
     public WarlockDecorator(Enemy enemy) {
         super(enemy, enemy.getName() + "Warlock ", enemy.getMaxHP()+1);
     }
 
     /**
-     * 
+     * attack action method 
+     * @param e Enity that will be attacked
+	 * @return the attack of the entity
      */
     public String attack(Entity e){
         return super.attack(e);

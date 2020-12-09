@@ -32,8 +32,9 @@ public class ItemGenerator{
     }
 
     /**
-     * 
-     * @return
+     * Check instance of Itemgenerator
+     * creeate one if there is no instance
+     * @return current instance 
      */
     public static ItemGenerator getInstance(){
         if (instance == null) instance = new ItemGenerator();

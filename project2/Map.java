@@ -9,7 +9,7 @@ public class Map {
     //location of that will be reveal
     private boolean[][] revealed;
 
-    /** */
+    /** Instance variable instance is initialized null*/
     private static Map instance = null;
 
     /**
@@ -21,8 +21,8 @@ public class Map {
     }
 
     /**
-     * 
-     * @return
+     * getInstance method - gets the instance of map 
+     * @return instance - instance of map
      */
     public static Map getInstance(){
         if (instance == null) instance = new Map();

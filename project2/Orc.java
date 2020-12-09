@@ -3,7 +3,7 @@ import java.util.Random;
 public class Orc extends Enemy {
 
     public Orc() {
-        super("Orc ", 6, i);
+        super();
     }
 
     @Override

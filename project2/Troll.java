@@ -3,8 +3,7 @@ import java.util.Random;
 public class Troll extends Enemy {
 
     public Troll() {
-        super("Troll ", 4, i);
-        // TODO Auto-generated constructor stub
+        super();
     }
 
     @Override

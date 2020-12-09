@@ -257,4 +257,37 @@ public class Hero extends Entity implements Magical{
         location.y--;
         return map.getCharAtLoc(location);
     }
+
+    /**
+     * 
+     */
+    public void useKey(){
+        for (int i = 0; i < this.items.size();i++){
+            if (items.get(i).getName().equals("Key")) {
+                items.remove(i);
+            }
+        }
+    }
+
+    /**
+     * 
+     * @return
+     */
+    public boolean hasKey(){
+        for (int i = 0; i < this.items.size();i++){
+            if (items.get(i).getName().equals("Key")) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public int hasArmorItem(){
+        for (int i = 0; i < this.items.size();i++){
+            if (items.get(i).getType() == 'a') {
+                return i;
+            }
+        }
+        return -1;
+    }
 }

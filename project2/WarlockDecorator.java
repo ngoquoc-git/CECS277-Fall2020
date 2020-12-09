@@ -2,37 +2,22 @@ import java.util.Random;
 
 /** */
 public class WarlockDecorator extends EnemyDecorator implements Magical {
-    
-    /** */
-    private Enemy em;
 
     /**
      * 
-     * @param enemy
-     * @param n
+     * @param en
+     * @param name
      * @param mHP
-     * @param i
      */
-    public WarlockDecorator(Enemy enemy) {
-        super("Warlock " + n, mHP+1, i);
-        em = enemy;
+    public WarlockDecorator(Enemy en, String name, int mHP) {
+        super(en, "Warlock ", mHP+2);
     }
-    
+
     /**
      * 
-     * @param
-     * @return
      */
     public String attack(Entity e){
-        Random rand = new Random();
-        int damage = rand.nextInt(3) + 1;
-        String magicalAttack;
-        
-        if(damage == 1) magicalAttack = magicalMissile(e);
-        else if (damage == 2) magicalAttack = fireBall(e);
-        else magicalAttack = thunderClap(e);
-
-        return magicalAttack;
+        return super.attack(e);
     }
 
     /**

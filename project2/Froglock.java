@@ -1,11 +1,18 @@
 import java.util.Random;
 
+/** */
 public class Froglock extends Enemy {
 
+    /**
+     * 
+     */
     public Froglock() {
         super("Froglock ", 5, ItemGenerator.getInstance().generateItem());
     }
 
+    /**
+     * 
+     */
     @Override
     public String attack(Entity e) {
         Random rand = new Random();

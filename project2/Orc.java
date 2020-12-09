@@ -1,12 +1,18 @@
 import java.util.Random;
 
+/** */
 public class Orc extends Enemy {
 
-
+    /**
+     * 
+     */
     public Orc() {
         super("Orc ", 5, ItemGenerator.getInstance().generateItem());
     }
 
+    /**
+     * 
+     */
     @Override
     public String attack(Entity e) {
         Random rand = new Random();

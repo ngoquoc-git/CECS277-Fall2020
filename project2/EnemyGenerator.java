@@ -1,11 +1,9 @@
 import java.util.ArrayList;
-import java.util.Scanner;
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.Random;
-//Generate each enemy from a given text file
+/** Generate each enemy from a given text file */
 public class EnemyGenerator {
     
+    /** */
     private ArrayList<Enemy> enemyList;
     /** */
     private static EnemyGenerator instance = null;

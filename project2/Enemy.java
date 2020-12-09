@@ -1,4 +1,6 @@
-//Enemy representation which is inherited from class Enity
+/**
+* public abstract class Enemy representation which extends from class Enity
+*/
 public abstract class Enemy extends Entity{
     //item that enemy may hold
     private Item item;
@@ -24,7 +26,8 @@ public abstract class Enemy extends Entity{
     }
 
     /**
-     *
+     * abstract method represents attack action 
+	 * @param e - Enity that will be attacked
      */    
     public abstract String attack(Entity e);
 }

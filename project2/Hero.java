@@ -166,8 +166,9 @@ public class Hero extends Entity implements Magical{
      * Drop an item if the iventory is full
      * @param index the item that will be deleted
      */
-    public void dropItem(int index){
+    public Item dropItem(int index){
         items.remove(index);
+        return items.get(index);
     }
 
     /**

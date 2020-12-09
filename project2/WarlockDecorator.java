@@ -1,7 +1,7 @@
 import java.util.Random;
 
 /** */
-public abstract class WarlockDecorator extends Enemy implements Magical {
+public class WarlockDecorator extends EnemyDecorator implements Magical {
     
     /** */
     private Enemy em;

@@ -1,31 +1,12 @@
-import java.util.Random;
+/** */
+public class WarriorDecorator extends EnemyDecorator{
 
-/**
- * 
- */
-public abstract class WarriorDecorator extends Enemy{
-
-    /** */
-    private Enemy em;
-
-    /**
-     * 
-     * @param enemy
-     * @param n
-     * @param mHP
-     * @param i
-     */
     public WarriorDecorator(Enemy enemy) {
-        super("Warrior " + n, mHP + 2, i);
-        em = enemy;
+        super(enemy);
     }
 
     public String attack(Entity e){
-        Random rand = new Random();
-        int damage = rand.nextInt(8);
-        e.takeDamage(damage);
-        if (damage == 0) return getName() + " hits you, but it is missed";
-        return getName() + " hits you and does " + damage + " damages.\n";
+        return super.attack(e);
     }
     
 }

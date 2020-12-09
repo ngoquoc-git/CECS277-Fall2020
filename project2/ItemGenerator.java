@@ -19,9 +19,9 @@ public class ItemGenerator{
         File readItem = new File("ItemList.txt");
         try{
             Scanner items = new Scanner(readItem);
-            String read = items.nextLine();
-            String[] splitStr = read.split(",");
             while(items.hasNextLine()){
+                String read = items.nextLine();
+                String[] splitStr = read.split(",");
                 itemList.add(new Item(splitStr[0], Integer.parseInt(splitStr[1]), splitStr[2].charAt(0))); 
             }
             items.close();

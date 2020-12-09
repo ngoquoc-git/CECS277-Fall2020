@@ -1,13 +1,26 @@
 import java.util.Random;
 
-public abstract class EnemyDecorator {
+public abstract class EnemyDecorator extends Enemy{
+    
+    /** */
     private Enemy en;
-    private String n;
-    private 
+    
+    /**
+     * 
+     * @param enemy
+     * @param name
+     * @param mHP
+     */
     public EnemyDecorator(Enemy enemy, String name, int mHP){
+        super(name, mHP, enemy.getItem());
         en = enemy;
-        
     }
+
+    /**
+     * 
+     * @param e
+     * @return
+     */
     public String attack(Entity e){
         Random rand = new Random();
         int damage = rand.nextInt(8);

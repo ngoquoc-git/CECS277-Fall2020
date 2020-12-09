@@ -11,9 +11,9 @@ public abstract class Enemy extends Entity{
      * @param mHP enemy's maximum health points
      * @param i enemy's item
      */
-    public Enemy(String n, int mHP, Item i){
-        super(n, mHP);
-        item = i;
+    public Enemy(){
+        //super(n, mHP);
+        //item = i;
     }
 
     /**

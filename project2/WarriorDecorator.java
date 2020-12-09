@@ -8,7 +8,7 @@ public class WarriorDecorator extends EnemyDecorator{
      * @param mHP
      */
     public WarriorDecorator(Enemy en, String name, int mHP) {
-        super(en, "Warrrior ", mHP+2);
+        super(en, en.getName + "Warrrior ", mHP+2);
     }
 
     /**

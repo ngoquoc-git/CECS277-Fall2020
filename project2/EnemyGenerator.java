@@ -36,15 +36,14 @@ public class EnemyGenerator {
      * @return 
      */
     public Enemy generateEnemy(int level){
-
         Random rand = new Random();
         int eg = rand.nextInt(enemyList.size());
-
         Enemy en = enemyList.get(eg);
-        if (en instanceof Froglock) en = new Froglock();
-        else if (en instanceof Goblin) en = new Goblin();
-        else if (en instanceof Orc) en = new Orc();
-        else if (en instanceof Troll) en = new Troll();
+
+        if (en instanceof Froglock) return new Froglock();
+        else if (en instanceof Goblin) return new Goblin();
+        else if (en instanceof Orc) return new Orc();
+        else return new Troll();
 
         if(level > 1){
             int type = rand.nextInt(2);
@@ -56,6 +55,18 @@ public class EnemyGenerator {
             if(type == 0) en = new WarlockDecorator(en);
             else en = new WarriorDecorator(en);
         }
+
+        en = createEnemy(en);
+
         return en;
+    }
+
+    /**
+     * 
+     * @param en
+     * @return
+     */
+    public Enemy createEnemy(Enemy en){
+        
     }
 }

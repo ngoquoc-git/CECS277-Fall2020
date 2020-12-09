@@ -217,14 +217,14 @@ class Main{
                 System.out.println("Store Capacity: " + h.getNumItems() + "/5.");
                 System.out.println("1. Health Potion: 7 coins.\n2. Key: 5 coins.\n3.Quit.");
                 int buy = CheckInput.getIntRange(1, 3);
-                if (dec == 1){
+                if (buy == 1){
                     if(h.getGold() < 7) System.out.println("You don't have enough coins");
                     else{
                         h.spendGold(7);
                         h.pickUpItem(ItemGenerator.getInstance().getPotion());
                     }
                 }
-                else if(dec == 2){
+                else if(buy == 2){
                     if(h.getGold() < 5) System.out.println("You don't have enough coins");
                     else{
                         h.spendGold(5);
@@ -239,7 +239,7 @@ class Main{
                     h.itemsToString();
                     System.out.println("Choose the item you weant to sell: ");
                     int sell = CheckInput.getIntRange(1, h.getNumItems());
-                    h.collectGold(h.dropItem(dec - 1).getValue());
+                    h.collectGold(h.dropItem(sell - 1).getValue());
                 }
 
             }

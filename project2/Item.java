@@ -20,14 +20,6 @@ public class Item implements Cloneable{
     }
 
     /**
-     * 
-     */
-    @Override
-    public Cloneable clone(){
-        return new Item(this);
-    }
-
-    /**
      * get item's name for further use
      * @return string name item's name
      */

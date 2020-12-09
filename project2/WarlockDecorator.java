@@ -13,7 +13,7 @@ public abstract class WarlockDecorator extends Enemy implements Magical {
      * @param mHP
      * @param i
      */
-    public WarlockDecorator(Enemy enemy, String n, int mHP, Item i) {
+    public WarlockDecorator(Enemy enemy) {
         super("Warlock " + n, mHP+1, i);
         em = enemy;
     }

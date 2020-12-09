@@ -2,7 +2,7 @@ import java.util.Random;
 
 public class Orc extends Enemy {
 
-    public Orc(String n, int mHP, Item i) {
+    public Orc() {
         super("Orc ", 6, i);
     }
 

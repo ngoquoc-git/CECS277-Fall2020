@@ -2,7 +2,7 @@ import java.util.Random;
 
 public class Goblin extends Enemy {
 
-    public Goblin(String n, int mHP, Item i) {
+    public Goblin() {
         super("Goblin ", 3, i);
     }
 

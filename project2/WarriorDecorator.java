@@ -15,7 +15,7 @@ public abstract class WarriorDecorator extends Enemy{
      * @param mHP
      * @param i
      */
-    public WarriorDecorator(Enemy enemy, String n, int mHP, Item i) {
+    public WarriorDecorator(Enemy enemy) {
         super("Warrior " + n, mHP + 2, i);
         em = enemy;
     }

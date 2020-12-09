@@ -47,7 +47,7 @@ public class ItemGenerator{
     public Item generateItem(){
         Random rand = new Random();
         int itemGen = rand.nextInt(itemList.size());
-        return (Item) itemList.get(itemGen).clone();
+        return (Item) itemList.get(itemGen);
     }
 
     /**

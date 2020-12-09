@@ -25,7 +25,7 @@ class Main{
         //Get user's name and load map
         System.out.print("What is your name traveler? ");
         heroName = CheckInput.getString();
-        map.loadMap(level + 1);
+        map.loadMap(level);
         myHero = new Hero(heroName, map);
 
         //Loop to break the game if plaer decide to quit, hero dies, or complete 3 levels
@@ -56,11 +56,18 @@ class Main{
                     if (enemy.getHP() == 0) map.removeCharAtLoc(myHero.getLocation());
                 }
                 else if (map.getCharAtLoc(myHero.getLocation()) == 'f') {
-                    level++;
-                    System.out.println("You have reached the finish point. Move on to the next level. \n");
-                    map.loadMap(level + 1);
-                    myHero.heal(myHero.getMaxHP());
-                    if(level < 4) System.out.println ("Level: " + level); 
+                    if(myHero.hasKey()){
+                        myHero.useKey();
+                        level++;
+                        System.out.println("You have reached the finish point. Move on to the next level. \n");
+                        map.loadMap(level);
+                        myHero.heal(myHero.getMaxHP());
+                        if(level < 4) System.out.println ("Level: " + level); 
+                        store(myHero);
+                    }
+                    else{
+                        System.out.println("Go back and find a key to proccess.\n");
+                    }
                 }
                 else System.out.println("Go Ahead.");
             }
@@ -208,46 +215,37 @@ class Main{
         System.out.println("Store only opens once every level, buy carefully.");
         System.out.println("You have: " + h.getGold());
         System.out.println("Store Capacity: " + h.getNumItems() + "/5.");
-        System.out.println("1. Buy.\n2. Sell.\3.Quit.");
+        System.out.println("1. Buy.\n2. Sell.\n3.Quit.");
         dec = CheckInput.getIntRange(1, 3);
-        do{
-            if(dec == 1){
-                System.out.println("You have: " + h.getGold());
-                System.out.println("Store Capacity: " + h.getNumItems() + "/5.");
-                System.out.println("1. Health Potion: 7 coins.\n2. Key: 5 coins.\n3.Quit.");
-                int buy = CheckInput.getIntRange(1, 3);
-                if (buy == 1){
-                    if(h.getGold() < 7) System.out.println("You don't have enough coins");
-                    else{
-                        h.spendGold(7);
-                        h.pickUpItem(ItemGenerator.getInstance().getPotion());
-                    }
-                }
-                else if(buy == 2){
-                    if(h.getGold() < 5) System.out.println("You don't have enough coins");
-                    else{
-                        h.spendGold(5);
-                        h.pickUpItem(ItemGenerator.getInstance().getKey());
-                    }
-                }
-
-            }
-            else if(dec == 2){
-                if(h.getNumItems() < 1) System.out.println("Bag is empty");
+        
+        if(dec == 1){
+            System.out.println("You have: " + h.getGold());
+            System.out.println("Store Capacity: " + h.getNumItems() + "/5.");
+            System.out.println("1. Health Potion: 7 coins.\n2. Key: 5 coins.\n3.Quit.");
+            int buy = CheckInput.getIntRange(1, 3);
+            if (buy == 1){
+                if(h.getGold() < 7) System.out.println("You don't have enough coins");
                 else{
-                    h.itemsToString();
-                    System.out.println("Choose the item you weant to sell: ");
-                    int sell = CheckInput.getIntRange(1, h.getNumItems());
-                    h.collectGold(h.dropItem(sell - 1).getValue());
+                    h.spendGold(7);
+                    h.pickUpItem(ItemGenerator.getInstance().getPotion());
                 }
-
             }
+            else if(buy == 2){
+                if(h.getGold() < 5) System.out.println("You don't have enough coins");
+                else{
+                    h.spendGold(5);
+                    h.pickUpItem(ItemGenerator.getInstance().getKey());
+                }
+            }
+        }
+        else if(dec == 2){
+            if(h.getNumItems() < 1) System.out.println("Bag is empty");
             else{
-                if(!h.hasKey()){
-                    System.out.println("You have to have a key to complete the mission");
-                    dec = CheckInput.getIntRange(1, 3);
-                }
+                h.itemsToString();
+                System.out.println("Choose the item you weant to sell: ");
+                int sell = CheckInput.getIntRange(1, h.getNumItems());
+                h.collectGold(h.dropItem(sell - 1).getValue());
             }
-        }while(dec != 3);
+        }     
     }
 }

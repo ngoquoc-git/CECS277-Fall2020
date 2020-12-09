@@ -5,40 +5,20 @@ import java.io.FileNotFoundException;
 import java.util.Random;
 //Generate each enemy from a given text file
 public class EnemyGenerator {
-    //Enemies that are read from EneemyList text file
+    
     private ArrayList<Enemy> enemyList;
-    // generate item to pass to enemy
-    private static ItemGenerator ig;
     /** */
     private static EnemyGenerator instance = null;
 
     /**
-     * Overloaded Constructor 
-     * Get enemy from the nenemy list create them by given information
-     * @param ig pass items to enemy
+     * 
      */
-    private EnemyGenerator(ItemGenerator ig) {
-        EnemyGenerator.ig = ig;
-        enemyList = new ArrayList<>();
-        File enemyGene = new File("EnemyList.txt");
-        try {
-            Scanner enemy = new Scanner(enemyGene);
-            while (enemy.hasNextLine()) {
-                String properties = enemy.nextLine();
-                String[] enemyInfo = properties.split(",");
-                if (enemyInfo[2].equals("m")) {
-                    Enemy magicE = new MagicalEnemy(enemyInfo[0], Integer.parseInt(enemyInfo[1]),
-                            EnemyGenerator.ig.generateItem());
-                    enemyList.add(magicE);
-                } else {
-                    //Enemy physE = new Enemy(enemyInfo[0], Integer.parseInt(enemyInfo[1]), EnemyGenerator.ig.generateItem());
-                    //enemyList.add(physE);
-                }
-            }
-            enemy.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+    private EnemyGenerator() {
+        enemyList = new ArrayList<Enemy>();
+        enemyList.add(new Froglock());
+        enemyList.add(new Goblin());
+        enemyList.add(new Orc());
+        enemyList.add(new Troll());
     }
 
     /**
@@ -46,15 +26,36 @@ public class EnemyGenerator {
      * @return
      */
     public static EnemyGenerator getInstance(){
-        if (instance == null) instance = new EnemyGenerator(ig);
+        if (instance == null) instance = new EnemyGenerator();
         return instance;
     }
 
     /**
      * 
+     * @param
      * @return 
      */
     public Enemy generateEnemy(int level){
-        return null;
+
+        Random rand = new Random();
+        int eg = rand.nextInt(enemyList.size());
+
+        Enemy en = enemyList.get(eg);
+        if (en instanceof Froglock) en = new Froglock();
+        else if (en instanceof Goblin) en = new Goblin();
+        else if (en instanceof Orc) en = new Orc();
+        else if (en instanceof Troll) en = new Troll();
+
+        if(level > 1){
+            int type = rand.nextInt(2);
+            if(type == 0) en = new WarlockDecorator(en);
+            else en = new WarriorDecorator(en);
+        }
+        if(level > 2){
+            int type = rand.nextInt(2);
+            if(type == 0) en = new WarlockDecorator(en);
+            else en = new WarriorDecorator(en);
+        }
+        return en;
     }
 }

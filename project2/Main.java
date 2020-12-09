@@ -47,7 +47,7 @@ class Main{
                 //Choose actions base on location's character
                 if (map.getCharAtLoc(myHero.getLocation()) == 's') {
                     System.out.println("You are back at the start.");
-
+                    store(myHero);
                 }
                 else if (map.getCharAtLoc(myHero.getLocation()) == 'i') itemRoom(myHero, map, ig);
                 else if (monsterRoom(myHero, map, eg, level)){
@@ -85,10 +85,6 @@ class Main{
     public static boolean fight(Hero h, Enemy e){
         int decision;
         int attack;
-        
-        //Create a magical enemy if condition is satisfied
-        if (e instanceof Magical) e = (MagicalEnemy) e;
-        System.out.println(e.toString());
         
         //check if hero has potions to use
         if(h.hasPotion()){
@@ -189,54 +185,8 @@ class Main{
      * @return true if this location has a monster, false otherwise
      */
     public static boolean monsterRoom(Hero h, Map m, EnemyGenerator eg, int level){
-        Enemy e = eg.generateEnemy(level);
-        m.reveal( h.getLocation() );
-        if( fight(h, e) ){
-            m.removeCharAtLoc( h.getLocation() );
-            if ( h.getHP() <= 0 ){
-                System.out.println( "You died." );
-                return false;
-            }
-        }
-        else{
-            boolean loopFlag = true;
-            //stores the character at the hero's position after running away
-            char event = 'e';
-            //while loop looks for valid direction, excludes any option that has 'w' event
-            while(loopFlag){
-                int r = (int)(Math.random() * 4);
-                switch (r){
-                    case 0:
-                        event = h.goNorth();
-                        if( !(event == 'w') ){
-                            loopFlag = false;
-                        }
-                        break;
-                    case 1:
-                        event = h.goSouth();
-                        if( !(event == 'w') ){
-                            loopFlag = false;
-                        }
-                        break;
-                    case 2:
-                        event = h.goEast();
-                        if( !(event == 'w') ){
-                            loopFlag = false;
-                        }
-                        break;
-                    case 3:
-                        event = h.goWest();
-                        if( !(event == 'w') ){
-                            loopFlag = false;
-                        }
-                        break;
-                }
-            }
-            if (event == 'm'){
-                return monsterRoom(h, m, eg, level);
-            }
-        }
-        return true;
+        if (m.getCharAtLoc(h.getLocation()) == 'm') return true;
+        return false;
     }
 
     /**
@@ -295,7 +245,7 @@ class Main{
             }
             else{
                 if(!h.hasKey()){
-                    System.out.println("You have to have a key to complete the mission")
+                    System.out.println("You have to have a key to complete the mission");
                     dec = CheckInput.getIntRange(1, 3);
                 }
             }

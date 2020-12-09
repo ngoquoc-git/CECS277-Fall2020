@@ -1,10 +1,19 @@
 /** */
 public class WarriorDecorator extends EnemyDecorator{
 
-    public WarriorDecorator(Enemy enemy) {
-        super(enemy);
+    /**
+     * 
+     * @param en
+     * @param name
+     * @param mHP
+     */
+    public WarriorDecorator(Enemy en, String name, int mHP) {
+        super(en, "Warrrior ", mHP+2);
     }
 
+    /**
+     * 
+     */
     public String attack(Entity e){
         return super.attack(e);
     }
